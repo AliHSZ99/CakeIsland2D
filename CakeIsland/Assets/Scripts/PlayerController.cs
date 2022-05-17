@@ -84,6 +84,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }
+
+        if (collision.gameObject.tag == "Enemy")
+        {
+            gameObject.transform.position = respawnPoint.transform.position;
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)

@@ -2,38 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MovingShootingEnemyBulletController : MonoBehaviour
+public class StationaryFlyingEnemyBulletController : MonoBehaviour
 {
-    public float speed = 10f;
-    private float bulletLife = 2f;
+    public float speed;
+    private float bulletLife;
 
-    [SerializeField]
     public Rigidbody2D rb;
 
-    [SerializeField]
+    public GameObject player;
+    Vector2 playerDirection;
+
     public GameObject respawnPoint;
 
     // Start is called before the first frame update
     void Start()
     {
+        speed = 50f;
+        bulletLife = 3f;
+        player = GameObject.FindGameObjectWithTag("Player");
+        playerDirection = (player.transform.position - transform.position) * speed * Time.deltaTime;
+        rb.velocity = new Vector2(playerDirection.x, playerDirection.y);
         Destroy(gameObject, bulletLife);
-
-        string direction = MovingShootingEnemyController.facingDirection;
-
-        if (direction.Equals("right"))
-        {
-            rb.velocity = Vector2.right * speed;
-        }
-        else
-        {
-            rb.velocity = Vector2.left * speed;
-        }
     }
 
     // Update is called once per frame
     void Update()
     {
-
+        
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
@@ -42,6 +37,10 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
         {
             Debug.Log("Player Shot.");
             collision.gameObject.transform.position = respawnPoint.transform.position;
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Ground")
+        {
             Destroy(gameObject);
         }
     }
