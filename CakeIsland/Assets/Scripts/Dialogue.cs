@@ -9,11 +9,12 @@ public class Dialogue : MonoBehaviour
     public string[] lines;
     public float textSpeed;
     private int index;
+    int line;
     // Start is called before the first frame update
     void Start()
     {
         text.text = string.Empty;
-        
+        line = 0;
         startDialogue();
     }
 
@@ -54,7 +55,7 @@ public class Dialogue : MonoBehaviour
 
     void updateDialogue()
     {
-        int line = 0;
+        
         if (Input.GetButtonDown("Horizontal") && text.text == lines[index] && line == 0)
         {
             NextLine();

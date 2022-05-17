@@ -28,6 +28,9 @@ public class PlayerController : MonoBehaviour
     // The rigidbody of the player.
     private Rigidbody2D rigidBody;
 
+    // To create the animation of the player.
+    public Animator playerAnimator;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -38,6 +41,7 @@ public class PlayerController : MonoBehaviour
     void Update()
     {
         var movement = Input.GetAxis("Horizontal");
+        playerAnimator.SetFloat("Speed", Mathf.Abs(movement * movementSpeed));
 
         // For moving the player left to right
         if (movement != 0)
@@ -66,7 +70,12 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1"))
         {
+            playerAnimator.SetBool("IsShooting", true);
             shoot();
+        }
+        else if (!(Input.GetButtonDown("Fire1")))
+        {
+            playerAnimator.SetBool("IsShooting", false);
         }
 
     }
@@ -81,6 +90,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "edge")
         {
+            HealthSystem.health--;
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }

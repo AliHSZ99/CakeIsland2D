@@ -7,6 +7,7 @@ TagManager:
   - Ground
   - edge
   - Enemy
+  - star
   layers:
   - Default
   - TransparentFX
