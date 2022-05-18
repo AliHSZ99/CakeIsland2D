@@ -82,6 +82,10 @@ public class PlayerController : MonoBehaviour
             
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
         }
+        else if (!Input.GetButtonDown("Jump") && isJumping == false)
+        {
+            playerAnimator.SetBool("IsJumping", false);
+        }
 
         if (Input.GetButtonDown("Fire1") && canShoot)
         {
@@ -91,11 +95,6 @@ public class PlayerController : MonoBehaviour
             StartCoroutine(stopShootingForm());
 
         }
-        else if (!Input.GetButtonDown("Jump") && isJumping == false)
-        {
-            playerAnimator.SetBool("IsJumping", false);
-        }
-
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
