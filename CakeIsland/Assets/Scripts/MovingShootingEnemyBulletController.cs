@@ -44,5 +44,13 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
             collision.gameObject.transform.position = respawnPoint.transform.position;
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
+        if (collision.gameObject.tag == "Ground")
+        {
+            Destroy(gameObject);
+        }
     }
 }

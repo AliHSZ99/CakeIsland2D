@@ -13,9 +13,10 @@ GameObject:
   - component: {fileID: -3642235548296555850}
   - component: {fileID: -518437583382667575}
   - component: {fileID: -2309959910321253669}
+  - component: {fileID: 2446169473840395101}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: Untagged
+  m_TagString: bullet
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -147,3 +148,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &2446169473840395101
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3256962520872191330}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 48a0a2996ef694a4796da1c1e28dd3de, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rand: 0
+  dropThreshold: 0
+  lifeThreshold: 0
+  shootThreshold: 0
+  speedThreshold: 0
+  jumpThreshold: 0
+  lifePowerup: {fileID: 2734992300166091579, guid: 17397361b9d63a04a8a63889002e4fd7, type: 3}
+  shootPowerup: {fileID: 2734992300166091579, guid: c472dced88b1a4248b27468b417cc2af, type: 3}
+  jumpPowerup: {fileID: 2734992300166091579, guid: 8c227bde08845b74bb0ee83ceeace2c6, type: 3}
+  speedPowerup: {fileID: 2734992300166091579, guid: 7fb9a6697c4fa0b4394985f0d082e0c9, type: 3}

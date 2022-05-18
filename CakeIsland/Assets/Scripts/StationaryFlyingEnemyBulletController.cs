@@ -43,5 +43,9 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
         {
             Destroy(gameObject);
         }
+        if (collision.gameObject.tag == "Enemy")
+        {
+            Destroy(gameObject);
+        }
     }
 }

@@ -6,7 +6,9 @@ public class BulletController : MonoBehaviour
 {
 
     public float speed = 20f;
-    private float bulletLife = 1.5f;
+    private float bulletLife = 1f;
+
+    DropPowerup dp;
 
     [SerializeField]
     public Rigidbody2D rb;
@@ -16,6 +18,7 @@ public class BulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        dp = GetComponent<DropPowerup>();
 
         Destroy(gameObject, bulletLife);
 
@@ -42,6 +45,11 @@ public class BulletController : MonoBehaviour
         if(collision.gameObject.tag == "Enemy")
         {
             Destroy(collision.gameObject);
+            dp.dropOrNot();
+            Destroy(gameObject);
+        }
+        if(collision.gameObject.tag == "Player")
+        {
             Destroy(gameObject);
         }
     }

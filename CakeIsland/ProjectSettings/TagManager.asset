@@ -8,6 +8,11 @@ TagManager:
   - edge
   - Enemy
   - star
+  - heart
+  - shoot
+  - speed
+  - jump
+  - bullet
   layers:
   - Default
   - TransparentFX

@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     // Direction that the player is facing.
     public static bool facingRight = true;
     // The player's movement speed.
-    public float movementSpeed = 1f;
+    public float movementSpeed = 5f;
     // The player's jumping height.
-    public float jumpingForce = 1f;
+    public float jumpingForce = 6.5f;
     // The player's jump status.
     public bool isJumping;
+
+    public bool canShoot;
 
     // The respawn point of the player.
     [SerializeField]
@@ -35,6 +37,7 @@ public class PlayerController : MonoBehaviour
     void Start()
     {
         rigidBody = GetComponent<Rigidbody2D>();
+        canShoot = false;
     }
 
     // Update is called once per frame
@@ -68,12 +71,13 @@ public class PlayerController : MonoBehaviour
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
         }
 
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && canShoot)
         {
+            Debug.Log("Player can shoot!");
             playerAnimator.SetBool("IsShooting", true);
             shoot();
         }
-        else if (!(Input.GetButtonDown("Fire1")))
+        else 
         {
             playerAnimator.SetBool("IsShooting", false);
         }
@@ -90,7 +94,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "edge")
         {
-            HealthSystem.health--;
+            PlayerInfo.health--;
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }
