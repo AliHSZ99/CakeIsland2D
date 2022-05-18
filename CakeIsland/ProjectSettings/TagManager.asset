@@ -8,6 +8,7 @@ TagManager:
   - edge
   - Enemy
   - star
+  - door
   layers:
   - Default
   - TransparentFX

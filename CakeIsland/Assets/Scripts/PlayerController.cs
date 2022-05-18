@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
+using TMPro;
 
 public class PlayerController : MonoBehaviour
 {
@@ -30,6 +32,13 @@ public class PlayerController : MonoBehaviour
 
     // To create the animation of the player.
     public Animator playerAnimator;
+
+    // This boolean variable is for Dialogue 
+    public static bool isCollected;
+
+    // For the point system 
+    public int points;
+    public TMP_Text pointLabel;
 
     // Start is called before the first frame update
     void Start()
@@ -65,17 +74,18 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isJumping == false)
         {
+            
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
         }
-
+        else if (!Input.GetButtonDown("Jump") && isJumping == false)
+        {
+            playerAnimator.SetBool("IsJumping", false);
+        }
+        
         if (Input.GetButtonDown("Fire1"))
         {
-            playerAnimator.SetBool("IsShooting", true);
             shoot();
-        }
-        else if (!(Input.GetButtonDown("Fire1")))
-        {
-            playerAnimator.SetBool("IsShooting", false);
+            StartCoroutine(stopShootingForm());
         }
 
     }
@@ -91,6 +101,11 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "edge")
         {
             HealthSystem.health--;
+            // For the tutorial only. Resets the health when it reachers 0
+            if (HealthSystem.health <= 0)
+            {
+                HealthSystem.health = 3;
+            }
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }
@@ -99,6 +114,19 @@ public class PlayerController : MonoBehaviour
         {
             gameObject.transform.position = respawnPoint.transform.position;
         }
+
+        if (collision.gameObject.tag == "star")
+        {
+            Object.Destroy(collision.gameObject);
+            isCollected = true;
+            points += 100;
+            pointLabel.text = "Points: " + points;
+        }
+
+        if (collision.gameObject.tag == "door")
+        {
+            SceneManager.LoadScene("TutorialLevelEnd");
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -106,6 +134,7 @@ public class PlayerController : MonoBehaviour
         //Checks if the player is not touching the ground. This prevents the character to jump on the air
         if (collision.gameObject.CompareTag("Ground"))
         {
+            playerAnimator.SetBool("IsJumping", true);
             isJumping = true;
         }
     }
@@ -122,6 +151,13 @@ public class PlayerController : MonoBehaviour
     void shoot()
     {
         Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+        playerAnimator.SetBool("IsShooting", true);
+    }
+
+    public IEnumerator stopShootingForm()
+    {
+        yield return new WaitForSeconds(0.2f);
+        playerAnimator.SetBool("IsShooting", false);
     }
 }
   

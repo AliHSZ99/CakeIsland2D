@@ -64,6 +64,14 @@ public class Dialogue : MonoBehaviour
         else if (Input.GetButtonDown("Jump") && text.text == lines[index] && line == 1)
         {
             NextLine();
+            line++;
+        } else if (PlayerController.isCollected && text.text == lines[index] && line == 2)
+        {
+            NextLine();
+            line++;
+        } else if (Input.GetButton("Fire1") && text.text == lines[index] && line == 3)
+        {
+            NextLine();
         }
     }
 }
