@@ -40,6 +40,8 @@ public class PlayerController : MonoBehaviour
     public int points;
     public TMP_Text pointLabel;
 
+    //Hello
+
     // Start is called before the first frame update
     void Start()
     {
