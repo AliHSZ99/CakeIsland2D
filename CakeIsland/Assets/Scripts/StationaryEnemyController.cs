@@ -34,6 +34,7 @@ public class StationaryEnemyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         baseScale = transform.localScale;
         facingDirection = RIGHT;
         rb = GetComponent<Rigidbody2D>();

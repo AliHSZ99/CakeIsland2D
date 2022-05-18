@@ -122,6 +122,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "Enemy")
         {
             gameObject.transform.position = respawnPoint.transform.position;
+            PlayerInfo.health--;
         }
 
         if (collision.gameObject.tag == "star")

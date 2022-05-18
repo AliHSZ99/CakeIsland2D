@@ -16,6 +16,8 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        rb = GetComponent<Rigidbody2D>();
+
         Destroy(gameObject, bulletLife);
 
         string direction = MovingShootingEnemyController.facingDirection;
@@ -42,10 +44,6 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
         {
             Debug.Log("Player Shot.");
             collision.gameObject.transform.position = respawnPoint.transform.position;
-            Destroy(gameObject);
-        }
-        if (collision.gameObject.tag == "Enemy")
-        {
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Ground")

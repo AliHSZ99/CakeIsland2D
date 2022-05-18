@@ -36,8 +36,7 @@ public class MovingShootingEnemyController : MonoBehaviour
     [SerializeField]
     GameObject firePoint;
 
-    [SerializeField]
-    GameObject bullet;
+    public GameObject bullet;
 
     public float time;
 
@@ -195,7 +194,7 @@ public class MovingShootingEnemyController : MonoBehaviour
         if (time >= 0.5)
         {
             time = 0;
-            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            Instantiate(bullet,firePoint.transform.position,firePoint.transform.rotation);
         }
     }
 }

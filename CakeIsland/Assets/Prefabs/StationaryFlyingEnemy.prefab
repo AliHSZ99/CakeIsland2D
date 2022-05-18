@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0d35d4dedee769246bf465ebfa1e95ca, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  player: {fileID: 4380750819385241447, guid: 8fa24e4ee2929e5448a8d913b01e73de, type: 3}
+  player: {fileID: 0}
   range: 0
   rb: {fileID: -1050993905214114406}
   bullet: {fileID: 3256962520872191330, guid: 1ce2684283bc15f40929aac767035870, type: 3}

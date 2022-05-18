@@ -32,6 +32,8 @@ public class BulletController : MonoBehaviour
         {
             rb.velocity = Vector2.left * speed;
         }
+
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

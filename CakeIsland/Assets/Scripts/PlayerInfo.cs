@@ -25,6 +25,7 @@ public class PlayerInfo : MonoBehaviour
 
     void Start()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         startingTime = 10f;
         currentTime = startingTime;
         canShoot = false;

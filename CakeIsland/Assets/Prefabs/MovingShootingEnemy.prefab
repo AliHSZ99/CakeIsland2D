@@ -43,7 +43,7 @@ GameObject:
   - component: {fileID: 4380750819385241448}
   - component: {fileID: 4380750819385241451}
   - component: {fileID: 2593876827855935964}
-  - component: {fileID: -2784005279504769465}
+  - component: {fileID: -5656525842950569208}
   m_Layer: 0
   m_Name: MovingShootingEnemy
   m_TagString: Enemy
@@ -181,7 +181,7 @@ CircleCollider2D:
   m_Offset: {x: 0.47, y: -0.48}
   serializedVersion: 2
   m_Radius: 0.0392766
---- !u!114 &-2784005279504769465
+--- !u!114 &-5656525842950569208
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -196,7 +196,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 6848287053052405637, guid: 9c57175483d927149aa2ebb6270838d0, type: 3}
   castPos: {fileID: 7451434554873894105}
   baseCastDistance: 1
-  fireCastDistance: 10
+  fireCastDistance: 5
   castDistance: 0
   fireDistance: 0
   firePoint: {fileID: 4380750818916883086}

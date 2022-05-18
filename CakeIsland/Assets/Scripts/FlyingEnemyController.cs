@@ -17,6 +17,7 @@ public class FlyingEnemyController : MonoBehaviour
         startingSpot = transform.position;
         range = 10f;
         speed = 5f;
+        player = GameObject.FindGameObjectWithTag("Player");
     }
 
     // Update is called once per frame

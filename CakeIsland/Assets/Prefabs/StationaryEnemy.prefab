@@ -132,7 +132,7 @@ MonoBehaviour:
   rb: {fileID: 0}
   bullet: {fileID: 3256962520872191330, guid: 78c02a7035a42084f863801ceac89dd4, type: 3}
   firePoint: {fileID: 585881469145318352}
-  player: {fileID: 4380750819385241447, guid: 8fa24e4ee2929e5448a8d913b01e73de, type: 3}
+  player: {fileID: 0}
   time: 0
   shootDelay: 0
   respawnPoint: {fileID: 6848287053052405637, guid: 9c57175483d927149aa2ebb6270838d0, type: 3}
