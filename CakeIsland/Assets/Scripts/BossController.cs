@@ -15,6 +15,7 @@ public class BossController : MonoBehaviour
     public float shootingDelay;
     public float meleeDelay;
     public Animator animator;
+    public AudioSource[] audioSources;
     // Start is called before the first frame update
     void Start()
     {
@@ -42,11 +43,23 @@ public class BossController : MonoBehaviour
         if (time >= shootingDelay)
         {
             time = 0;
-            animator.SetBool("damage", true);
-            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-            //Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y + 3), firePoint.transform.rotation);
-            //Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y - 3), firePoint.transform.rotation);
-
+            if (BossInfo.health <= 5 && BossInfo.health != 0)
+            {
+                Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+                Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y + 3), firePoint.transform.rotation);
+                Instantiate(bullet, new Vector2(firePoint.transform.position.x, firePoint.transform.position.y - 3), firePoint.transform.rotation);
+                animator.SetBool("attack", true);
+                audioSources[2].Play();
+                
+            } else if (BossInfo.health > 5)
+            {
+                Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+                animator.SetBool("damage", true);
+                audioSources[1].Play();
+            } else
+            {
+                PlayerDied();
+            }
         }
     }
 
@@ -69,6 +82,8 @@ public class BossController : MonoBehaviour
 
             animator.SetBool("attack02", true);
             PlayerInfo.health--;
+            audioSources[0].Play();
+            audioSources[4].Play();
         }
     }
 
