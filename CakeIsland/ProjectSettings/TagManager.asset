@@ -14,6 +14,7 @@ TagManager:
   - edge
   - door
   - Ground
+  - doorLevel1
   layers:
   - Default
   - TransparentFX
