@@ -79,7 +79,6 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Jump") && isJumping == false)
         {
-            
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
         }
         else if (!Input.GetButtonDown("Jump") && isJumping == false)
@@ -137,6 +136,10 @@ public class PlayerController : MonoBehaviour
         {
             SceneManager.LoadScene("TutorialLevelEnd");
         }
+        if (collision.gameObject.tag == "doorLevel1")
+        {
+            SceneManager.LoadScene("Level1End");
+        }
     }
 
     private void OnCollisionExit2D(Collision2D collision)
@@ -144,7 +147,6 @@ public class PlayerController : MonoBehaviour
         //Checks if the player is not touching the ground. This prevents the character to jump on the air
         if (collision.gameObject.CompareTag("Ground"))
         {
-            playerAnimator.SetBool("IsJumping", true);
             isJumping = true;
         }
     }
