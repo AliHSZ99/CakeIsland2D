@@ -15,6 +15,7 @@ TagManager:
   - door
   - Ground
   - doorLevel1
+  - Boss
   layers:
   - Default
   - TransparentFX

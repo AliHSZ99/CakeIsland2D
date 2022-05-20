@@ -8,7 +8,8 @@ public class BossBulletController : MonoBehaviour
     public float speed;
     private float bulletLife;
     public Rigidbody2D rb;
-
+    public AudioSource audioo;
+    public AudioSource[] boss;
     public GameObject player;
     Vector2 playerDirection;
 
@@ -19,6 +20,7 @@ public class BossBulletController : MonoBehaviour
         speed = 400f;
         bulletLife = 7f;
         player = GameObject.FindGameObjectWithTag("Player");
+        boss = GameObject.FindGameObjectWithTag("Boss").GetComponent<BossController>().audioSources;
         playerDirection = (player.transform.position - transform.position) * speed * Time.deltaTime;
         rb.velocity = new Vector2(playerDirection.x, playerDirection.y);
         Destroy(gameObject, bulletLife);
@@ -35,7 +37,8 @@ public class BossBulletController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Destroy(gameObject);
-            PlayerInfo.health--;
+            BossInfo.health--;
+            boss[3].Play();
         }
        
     }
