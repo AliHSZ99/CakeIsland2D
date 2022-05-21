@@ -42,6 +42,11 @@ public class PlayerController : MonoBehaviour
     public int points;
     public TMP_Text pointLabel;
 
+
+    // For unlocked checkpoints
+    private GameObject unlockCheckpoint2;
+    private GameObject unlockCheckpoint3;
+
     //Hello
 
     // Start is called before the first frame update
@@ -49,6 +54,12 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         canShoot = false;
+
+
+        unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
+        unlockCheckpoint2.SetActive(false);
+        unlockCheckpoint3 = GameObject.FindGameObjectWithTag("UnlockCheckpoint3");
+        unlockCheckpoint3.SetActive(false);
     }
 
     // Update is called once per frame
@@ -170,6 +181,23 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.2f);
         playerAnimator.SetBool("IsShooting", false);
+    }
+
+    public void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "Checkpoint2")
+        {
+            respawnPoint = unlockCheckpoint2;
+            Destroy(collision.gameObject);
+            unlockCheckpoint2.SetActive(true);
+        }
+
+        if (collision.gameObject.tag == "Checkpoint3")
+        {
+            respawnPoint = unlockCheckpoint3;
+            Destroy(collision.gameObject);
+            unlockCheckpoint3.SetActive(true);
+        }
     }
 }
   

@@ -16,6 +16,10 @@ TagManager:
   - Ground
   - doorLevel1
   - Boss
+  - Checkpoint2
+  - Checkpoint3
+  - UnlockCheckpoint2
+  - UnlockCheckpoint3
   layers:
   - Default
   - TransparentFX
