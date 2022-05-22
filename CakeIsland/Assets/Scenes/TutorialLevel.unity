@@ -296,6 +296,8 @@ MonoBehaviour:
   playerAnimator: {fileID: 266724660}
   points: 0
   pointLabel: {fileID: 1871123928}
+  goUpPlatformLevel2: {fileID: 0}
+  LevelEnd: Null
 --- !u!60 &266724658
 PolygonCollider2D:
   m_ObjectHideFlags: 0

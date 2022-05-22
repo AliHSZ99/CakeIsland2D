@@ -58646,6 +58646,7 @@ MonoBehaviour:
   points: 0
   pointLabel: {fileID: 0}
   goUpPlatformLevel2: {fileID: 0}
+  LevelEnd: Level2End
 --- !u!114 &1352416326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -85613,11 +85614,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 225.7
+      value: 134.8
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 33
+      value: -15
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.z

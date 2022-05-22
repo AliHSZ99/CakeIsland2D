@@ -50,7 +50,8 @@ public class PlayerController : MonoBehaviour
     private GameObject unlockCheckpoint3;
 
     // This is the platform in level 2 that should start going up and down when the player hits the trigger. 
-    public GameObject goUpPlatformLevel2; 
+    public GameObject goUpPlatformLevel2;
+    public string LevelEnd;
 
     //Hello
 
@@ -125,11 +126,14 @@ public class PlayerController : MonoBehaviour
         {
             PlayerInfo.health--;
 
-            // For the tutorial only. Resets the health when it reachers 0
-            if (PlayerInfo.health <= 0)
+            if (LevelEnd.Equals("Null"))
             {
                 PlayerInfo.health = 3;
+            } else
+            {
+                checkPlayerStatus();
             }
+
 
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
@@ -138,12 +142,15 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "spike")
         {
             this.transform.position = respawnPoint.transform.position;
+            PlayerInfo.health--;
+            checkPlayerStatus();
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
             gameObject.transform.position = respawnPoint.transform.position;
             PlayerInfo.health--;
+            checkPlayerStatus();
         }
 
         if (collision.gameObject.tag == "star")
@@ -217,6 +224,14 @@ public class PlayerController : MonoBehaviour
         // To check if the platform in level 2 should go up. 
         if (collision.gameObject.tag == "MoveUpTrigger") {
             goUpPlatformLevel2.GetComponent<MoveVerticalPlat>().enabled = true;
+        }
+    }
+
+    public void checkPlayerStatus()
+    {
+        if (PlayerInfo.health == 0)
+        {
+            SceneManager.LoadScene(LevelEnd);
         }
     }
 }

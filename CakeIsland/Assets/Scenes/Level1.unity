@@ -13116,6 +13116,7 @@ MonoBehaviour:
   points: 0
   pointLabel: {fileID: 0}
   goUpPlatformLevel2: {fileID: 0}
+  LevelEnd: Level1End
 --- !u!70 &669095798
 CapsuleCollider2D:
   m_ObjectHideFlags: 0
