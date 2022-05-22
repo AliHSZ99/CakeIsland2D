@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
     // The player's jump status.
     public bool isJumping;
 
+    public static bool canShootBoss;
+
     public bool canShoot;
 
     // The respawn point of the player.
@@ -56,15 +58,16 @@ public class PlayerController : MonoBehaviour
         canShoot = false;
 
 
-        unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
+        /*unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
         unlockCheckpoint2.SetActive(false);
         unlockCheckpoint3 = GameObject.FindGameObjectWithTag("UnlockCheckpoint3");
-        unlockCheckpoint3.SetActive(false);
+        unlockCheckpoint3.SetActive(false);*/
     }
 
     // Update is called once per frame
     void Update()
     {
+        Debug.Log(canShootBoss);
         var movement = Input.GetAxis("Horizontal");
         playerAnimator.SetFloat("Speed", Mathf.Abs(movement * movementSpeed));
 
@@ -97,7 +100,7 @@ public class PlayerController : MonoBehaviour
             playerAnimator.SetBool("IsJumping", false);
         }
 
-        if (Input.GetButtonDown("Fire1") && canShoot)
+        if (Input.GetButtonDown("Fire1") && (canShoot || canShootBoss))
         {
             Debug.Log("Player can shoot!");
             playerAnimator.SetBool("IsShooting", true);

@@ -13,6 +13,8 @@ public class BossController : MonoBehaviour
     public GameObject firePoint;
     public GameObject player;
     public float shootingDelay;
+    public float powerUpDelay;
+    public BossDropPowerUp dp;
     public float meleeDelay;
     public Animator animator;
     public AudioSource[] audioSources;
@@ -23,11 +25,15 @@ public class BossController : MonoBehaviour
         time = 0;
         shootingDelay = 2f;
         meleeDelay = 2f;
+        powerUpDelay = 2f;
+        dp = GetComponent<BossDropPowerUp>();
+        PlayerController.canShootBoss = true;
     }
 
     // Update is called once per frame
     void Update()
     {
+        DroppingPowerUps();
         if (Vector2.Distance(transform.position, player.transform.position) < 5f)
         {
             Melee();
@@ -58,7 +64,7 @@ public class BossController : MonoBehaviour
                 audioSources[1].Play();
             } else
             {
-                PlayerDied();
+                BossDied();
             }
         }
     }
@@ -87,9 +93,16 @@ public class BossController : MonoBehaviour
         }
     }
 
-    void PlayerDied()
+    public static void PlayerDied()
     {
-            SceneManager.LoadScene("GameOverScreen");
+        PlayerController.canShootBoss = false;
+        SceneManager.LoadScene("GameOverScreen");
+    }
+
+    public static void BossDied()
+    {
+        PlayerController.canShootBoss = false;
+        SceneManager.LoadScene("WinScreen");
     }
 
     IEnumerator ExecuteAfterTime(float time)
@@ -97,6 +110,26 @@ public class BossController : MonoBehaviour
         yield return new WaitForSeconds(time);
 
         PlayerDied();
+    }
+
+    void DroppingPowerUps()
+    {
+        time += Time.deltaTime;
+        if (time >= powerUpDelay)
+        {
+            time = 0;
+            dp.dropOrNot();
+
+        }
+    }
+
+    private void OnTriggerEnter2D(Collider2D collision)
+    {
+        if (collision.gameObject.tag == "bullet")
+        {
+            Destroy(collision.gameObject);
+            BossInfo.health--;
+        }
     }
 
 }

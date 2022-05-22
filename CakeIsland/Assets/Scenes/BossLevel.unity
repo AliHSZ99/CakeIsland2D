@@ -257,7 +257,7 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 2
+  m_Constraints: 6
 --- !u!114 &32717929
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -275,6 +275,8 @@ MonoBehaviour:
   firePoint: {fileID: 949845666}
   player: {fileID: 0}
   shootingDelay: 0.3
+  powerUpDelay: 0
+  dp: {fileID: 0}
   meleeDelay: 0
   animator: {fileID: 32717925}
   audioSources:
@@ -309,6 +311,42 @@ MonoBehaviour:
   fullHeart: {fileID: 21300000, guid: b59cd466655b7c04dbd1f52ed5286454, type: 3}
   emptyHeart: {fileID: 21300000, guid: cdc56d38037122f4983bcf7c505003b0, type: 3}
   boss: {fileID: 0}
+--- !u!114 &32717931
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32717924}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c61273143e864e49b1f0dd141e76c31, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  rand: 0
+  dropThreshold: 0
+  lifeThreshold: 0
+  speedThreshold: 0
+  jumpThreshold: 0
+  lifePowerup: {fileID: 2734992300166091579, guid: 17397361b9d63a04a8a63889002e4fd7, type: 3}
+  jumpPowerup: {fileID: 2734992300166091579, guid: 8c227bde08845b74bb0ee83ceeace2c6, type: 3}
+  speedPowerup: {fileID: 2734992300166091579, guid: 7fb9a6697c4fa0b4394985f0d082e0c9, type: 3}
+--- !u!70 &32717932
+CapsuleCollider2D:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 32717924}
+  m_Enabled: 1
+  m_Density: 1
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_UsedByEffector: 0
+  m_UsedByComposite: 0
+  m_Offset: {x: -0.07596779, y: 3.8896296}
+  m_Size: {x: 2.2321014, y: 6.22669}
+  m_Direction: 0
 --- !u!1 &69291051
 GameObject:
   m_ObjectHideFlags: 0
@@ -1091,6 +1129,7 @@ GameObject:
   - component: {fileID: 417811448}
   - component: {fileID: 417811447}
   - component: {fileID: 417811450}
+  - component: {fileID: 417811451}
   m_Layer: 7
   m_Name: Tilemap
   m_TagString: Ground
@@ -1805,6 +1844,18 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 7
+--- !u!114 &417811451
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 417811445}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f0cc58965ebc224f93e1145119ccf89, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &424152752
 GameObject:
   m_ObjectHideFlags: 0
@@ -4799,7 +4850,7 @@ AudioSource:
   m_GameObject: {fileID: 1281462153}
   m_Enabled: 1
   serializedVersion: 4
-  OutputAudioMixerGroup: {fileID: 0}
+  OutputAudioMixerGroup: {fileID: 24300002, guid: 3d2afd587daa0784cbb5d49c08e07355, type: 2}
   m_audioClip: {fileID: 8300000, guid: 8e80304c68a5dbb40a35c1c0ee1108c6, type: 3}
   m_PlayOnAwake: 1
   m_Volume: 0.2
@@ -6208,7 +6259,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1873030402443433276, guid: 332b21a684312b34798ace98affe4eed, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 20.2
+      value: 20.75
       objectReference: {fileID: 0}
     - target: {fileID: 1873030402443433276, guid: 332b21a684312b34798ace98affe4eed, type: 3}
       propertyPath: m_LocalPosition.y

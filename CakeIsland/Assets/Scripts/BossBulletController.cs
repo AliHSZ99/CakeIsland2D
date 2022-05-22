@@ -36,10 +36,15 @@ public class BossBulletController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
+            if (PlayerInfo.health == 1)
+            {
+                BossController.PlayerDied();
+            }
             Destroy(gameObject);
-            BossInfo.health--;
+            PlayerInfo.health--;
             boss[3].Play();
         }
+
        
     }
 
