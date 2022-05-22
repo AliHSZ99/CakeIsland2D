@@ -75,7 +75,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 60
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 7f220be52c86a7b48b76277115bbf48a, type: 3}
   m_Color: {r: 1, g: 0.41723195, b: 0.25, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -101,6 +101,7 @@ MonoBehaviour:
   speed: 0
   rb: {fileID: 3354162768740207160}
   audioo: {fileID: 6642140428557049750}
+  boss: []
   player: {fileID: 0}
 --- !u!50 &3354162768740207160
 Rigidbody2D:

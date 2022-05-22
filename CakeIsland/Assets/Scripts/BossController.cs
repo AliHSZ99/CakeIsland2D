@@ -62,10 +62,7 @@ public class BossController : MonoBehaviour
                 Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
                 animator.SetBool("damage", true);
                 audioSources[1].Play();
-            } else
-            {
-                BossDied();
-            }
+            } 
         }
     }
 
@@ -127,8 +124,13 @@ public class BossController : MonoBehaviour
     {
         if (collision.gameObject.tag == "bullet")
         {
+            if (BossInfo.health == 1)
+            {
+                BossDied();
+            }
             Destroy(collision.gameObject);
             BossInfo.health--;
+            audioSources[3].Play();
         }
     }
 

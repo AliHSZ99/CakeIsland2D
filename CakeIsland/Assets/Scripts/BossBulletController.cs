@@ -42,7 +42,7 @@ public class BossBulletController : MonoBehaviour
             }
             Destroy(gameObject);
             PlayerInfo.health--;
-            boss[3].Play();
+            boss[4].Play();
         }
 
        
