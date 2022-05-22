@@ -43,7 +43,6 @@ public class PlayerController : MonoBehaviour
 
     // For the point system 
     public int points;
-    public TMP_Text pointLabel;
 
 
     // For unlocked checkpoints
@@ -72,7 +71,7 @@ public class PlayerController : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        Debug.Log(canShootBoss);
+        /*Debug.Log(canShootBoss);*/
         var movement = Input.GetAxis("Horizontal");
         playerAnimator.SetFloat("Speed", Mathf.Abs(movement * movementSpeed));
 
@@ -161,7 +160,7 @@ public class PlayerController : MonoBehaviour
             Object.Destroy(collision.gameObject);
             isCollected = true;
             points += 100;
-            pointLabel.text = "Points: " + points;
+            /*pointLabel.text = "Points: " + points;*/
         }
 
         if (collision.gameObject.tag == "door")
