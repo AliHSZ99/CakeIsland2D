@@ -43,7 +43,8 @@ public class PlayerController : MonoBehaviour
 
     // For the point system 
     public int points;
-
+    public int previousPoints;
+    public TMP_Text pointLabel;
 
     // For unlocked checkpoints
     private GameObject unlockCheckpoint2;
@@ -60,7 +61,6 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         canShoot = false;
-
 
         /*unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
         unlockCheckpoint2.SetActive(false);
@@ -128,10 +128,11 @@ public class PlayerController : MonoBehaviour
         {
             PlayerInfo.health--;
 
-            if (LevelEnd.Equals("Null"))
+            if (LevelEnd.Equals("Null") && PlayerInfo.health == 0)
             {
                 PlayerInfo.health = 3;
-            } else
+            }
+            else
             {
                 checkPlayerStatus();
             }
@@ -155,12 +156,13 @@ public class PlayerController : MonoBehaviour
             checkPlayerStatus();
         }
 
-        if (collision.gameObject.tag == "star")
+        if (collision.gameObject.tag == "Coin")
         {
             Object.Destroy(collision.gameObject);
             isCollected = true;
-            points += 100;
-            /*pointLabel.text = "Points: " + points;*/
+            points += 20;
+            Debug.Log(points);
+            pointLabel.text = "Points: " + points;
         }
 
         if (collision.gameObject.tag == "door")
@@ -169,6 +171,7 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "doorLevel1")
         {
+            previousPoints = points;
             SceneManager.LoadScene("Level1End");
         }
         if (collision.gameObject.tag == "doorLevel2")

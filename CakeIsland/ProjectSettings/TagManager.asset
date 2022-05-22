@@ -23,6 +23,7 @@ TagManager:
   - spike
   - doorLevel2
   - MoveUpTrigger
+  - Coin
   layers:
   - Default
   - TransparentFX
