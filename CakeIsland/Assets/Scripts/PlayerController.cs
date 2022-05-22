@@ -15,6 +15,7 @@ public class PlayerController : MonoBehaviour
     public float jumpingForce = 6.5f;
     // The player's jump status.
     public bool isJumping;
+    public AudioSource[] audioSources;
 
     public static bool canShootBoss;
 
@@ -98,6 +99,7 @@ public class PlayerController : MonoBehaviour
         if (Input.GetButtonDown("Jump") && isJumping == false)
         {
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
+            audioSources[1].Play();
         }
         else if (!Input.GetButtonDown("Jump") && isJumping == false)
         {
@@ -109,6 +111,7 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Player can shoot!");
             playerAnimator.SetBool("IsShooting", true);
             shoot();
+            audioSources[0].Play();
             StartCoroutine(stopShootingForm());
 
         }
