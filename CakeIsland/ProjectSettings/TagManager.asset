@@ -20,6 +20,9 @@ TagManager:
   - Checkpoint3
   - UnlockCheckpoint2
   - UnlockCheckpoint3
+  - spike
+  - doorLevel2
+  - MoveUpTrigger
   layers:
   - Default
   - TransparentFX

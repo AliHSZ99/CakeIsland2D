@@ -847,7 +847,7 @@ MonoBehaviour:
   goingDown: -1
   lowerBound: -1.5
   upperBound: 5
-  speed: 0.01
+  speed: 0.09
 --- !u!1 &50967824
 GameObject:
   m_ObjectHideFlags: 0
@@ -1834,7 +1834,7 @@ MonoBehaviour:
   goingLeft: -1
   lowerBound: -4
   upperBound: 2.75
-  speed: 0.03
+  speed: 0.09
 --- !u!1 &107505890
 GameObject:
   m_ObjectHideFlags: 0
@@ -5536,7 +5536,7 @@ MonoBehaviour:
   goingLeft: -1
   lowerBound: 7
   upperBound: 14
-  speed: 0.03
+  speed: 0.07
 --- !u!1 &312339485
 GameObject:
   m_ObjectHideFlags: 0
@@ -6086,7 +6086,6 @@ GameObject:
   m_Component:
   - component: {fileID: 342830309}
   - component: {fileID: 342830308}
-  - component: {fileID: 342830310}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_7
   m_TagString: Ground
@@ -6159,37 +6158,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 190
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &342830310
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 342830307}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.8671875, y: 1}
-      - {x: -0.921875, y: 0.046875}
-      - {x: -0.921875, y: -0.6953125}
-      - {x: -0.8671875, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 1}
 --- !u!1 &343862746
 GameObject:
   m_ObjectHideFlags: 0
@@ -8625,9 +8593,9 @@ GameObject:
   - component: {fileID: 477165198}
   - component: {fileID: 477165201}
   - component: {fileID: 477165200}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spike (2)
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -9491,9 +9459,9 @@ GameObject:
   - component: {fileID: 511406036}
   - component: {fileID: 511406039}
   - component: {fileID: 511406038}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spike (1)
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -10332,7 +10300,6 @@ GameObject:
   m_Component:
   - component: {fileID: 549764678}
   - component: {fileID: 549764677}
-  - component: {fileID: 549764679}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_8
   m_TagString: Ground
@@ -10405,35 +10372,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 189
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &549764679
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 549764676}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1, y: 1}
-      - {x: -1, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 1}
 --- !u!1 &551487489
 GameObject:
   m_ObjectHideFlags: 0
@@ -11237,7 +11175,6 @@ GameObject:
   - component: {fileID: 581064983}
   - component: {fileID: 581064982}
   - component: {fileID: 581064985}
-  - component: {fileID: 581064984}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_4 (1)
   m_TagString: Ground
@@ -11310,42 +11247,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &581064984
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 581064981}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: 1, y: 0.1640625}
-      - {x: 1, y: 0.7578125}
-      - {x: 0.84375, y: 0.9921875}
-      - {x: 0.796875, y: 1}
-      - {x: -0.9609375, y: 1}
-      - {x: -1, y: 0.984375}
-      - {x: -1, y: -1}
-      - {x: 0.859375, y: -1}
-      - {x: 0.9375, y: -0.515625}
-      - {x: 0.921875, y: -0.40625}
-      - {x: 0.9609375, y: 0.0546875}
 --- !u!1839735485 &581064985
 Tilemap:
   m_ObjectHideFlags: 0
@@ -12093,7 +11994,7 @@ MonoBehaviour:
   goingDown: -1
   lowerBound: -6
   upperBound: 4
-  speed: 0.03
+  speed: 0.08
 --- !u!1 &614015629
 GameObject:
   m_ObjectHideFlags: 0
@@ -14627,7 +14528,7 @@ MonoBehaviour:
   goingDown: -1
   lowerBound: -1
   upperBound: 2.5
-  speed: 0.01
+  speed: 0.08
 --- !u!1 &763452215
 GameObject:
   m_ObjectHideFlags: 0
@@ -17859,7 +17760,7 @@ MonoBehaviour:
   goingLeft: -1
   lowerBound: 11.5
   upperBound: 14
-  speed: 0.01
+  speed: 0.04
 --- !u!1 &913137577
 GameObject:
   m_ObjectHideFlags: 0
@@ -23398,9 +23299,9 @@ GameObject:
   - component: {fileID: 1246647260}
   - component: {fileID: 1246647263}
   - component: {fileID: 1246647262}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spike (4)
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -23895,7 +23796,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1262102319}
   - component: {fileID: 1262102318}
-  - component: {fileID: 1262102320}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_7 (1)
   m_TagString: Ground
@@ -23968,37 +23868,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 192
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1262102320
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1262102317}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.8671875, y: 1}
-      - {x: -0.921875, y: 0.046875}
-      - {x: -0.921875, y: -0.6953125}
-      - {x: -0.8671875, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 1}
 --- !u!1 &1270935936
 GameObject:
   m_ObjectHideFlags: 0
@@ -24257,6 +24126,8 @@ GameObject:
   - component: {fileID: 1275995289}
   - component: {fileID: 1275995291}
   - component: {fileID: 1275995290}
+  - component: {fileID: 1275995293}
+  - component: {fileID: 1275995292}
   m_Layer: 7
   m_Name: trampoline (21)
   m_TagString: Ground
@@ -24272,7 +24143,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1275995287}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -24.02, y: 36.63, z: 24.078188}
+  m_LocalPosition: {x: -23.04, y: 36.63, z: 24.078188}
   m_LocalScale: {x: 0.45533493, y: 0.45533493, z: 0.45533493}
   m_Children: []
   m_Father: {fileID: 1679191316}
@@ -24346,7 +24217,7 @@ EdgeCollider2D:
   m_EdgeRadius: 0
   m_Points:
   - {x: -1.279008, y: -1.2473508}
-  - {x: -1.1265186, y: -0.38575006}
+  - {x: -1.1265186, y: -0.3571902}
   - {x: 1.1345532, y: -0.35129225}
   - {x: 1.2698668, y: -1.2440624}
   - {x: -1.2618698, y: -1.2781476}
@@ -24392,6 +24263,34 @@ Tilemap:
     e31: 0
     e32: 0
     e33: 1
+--- !u!114 &1275995292
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275995287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2647ff670163d3d41bd54925818a2ff5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  goingLeft: -1
+  lowerBound: -26
+  upperBound: -23
+  speed: 0.08
+--- !u!114 &1275995293
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1275995287}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 815f6321058f3304fb40c36adb0b7e2e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1278251988
 GameObject:
   m_ObjectHideFlags: 0
@@ -24685,7 +24584,6 @@ GameObject:
   - component: {fileID: 1298857921}
   - component: {fileID: 1298857920}
   - component: {fileID: 1298857923}
-  - component: {fileID: 1298857922}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_3 (1)
   m_TagString: Ground
@@ -24758,36 +24656,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1298857922
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1298857919}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1, y: 1}
-      - {x: -1, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 0.9921875}
-      - {x: 0.9921875, y: 1}
 --- !u!1839735485 &1298857923
 Tilemap:
   m_ObjectHideFlags: 0
@@ -29548,7 +29416,7 @@ MonoBehaviour:
   goingLeft: -1
   lowerBound: 85
   upperBound: 92.5
-  speed: 0.03
+  speed: 0.08
 --- !u!114 &1473570283
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -29694,9 +29562,9 @@ GameObject:
   - component: {fileID: 1477385590}
   - component: {fileID: 1477385593}
   - component: {fileID: 1477385592}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spike (5)
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -31702,8 +31570,8 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1622032438
-PolygonCollider2D:
+--- !u!61 &1622032438
+BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -31715,7 +31583,7 @@ PolygonCollider2D:
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
+  m_Offset: {x: 2.9246216, y: -1.0128467}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -31725,17 +31593,9 @@ PolygonCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -0.765625, y: 1}
-      - {x: -0.9921875, y: 0.8671875}
-      - {x: -1, y: 0.8359375}
-      - {x: -1, y: -0.25}
-      - {x: -0.9921875, y: -0.3828125}
-      - {x: -0.8984375, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 0.984375}
-      - {x: 0.9296875, y: 1}
+  serializedVersion: 2
+  m_Size: {x: 7.7419147, y: 4.0256934}
+  m_EdgeRadius: 0
 --- !u!1839735485 &1622032439
 Tilemap:
   m_ObjectHideFlags: 0
@@ -32426,9 +32286,9 @@ GameObject:
   - component: {fileID: 1662899987}
   - component: {fileID: 1662899990}
   - component: {fileID: 1662899989}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: spike (3)
-  m_TagString: Untagged
+  m_TagString: spike
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -33376,7 +33236,6 @@ GameObject:
   - component: {fileID: 1700686557}
   - component: {fileID: 1700686556}
   - component: {fileID: 1700686559}
-  - component: {fileID: 1700686558}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_3 (2)
   m_TagString: Ground
@@ -33449,36 +33308,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &1700686558
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1700686555}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1, y: 1}
-      - {x: -1, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 0.9921875}
-      - {x: 0.9921875, y: 1}
 --- !u!1839735485 &1700686559
 Tilemap:
   m_ObjectHideFlags: 0
@@ -38788,11 +38617,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 97.35
+      value: 130.7
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 20.22
+      value: -1.1
       objectReference: {fileID: 0}
     - target: {fileID: 4881386325594014, guid: 1713af3811cfb9d4d82968643d5b8586, type: 3}
       propertyPath: m_LocalPosition.z
@@ -39603,7 +39432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2087836475}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 88.73, y: 51.690002, z: 24.078188}
+  m_LocalPosition: {x: 88.73, y: 53.3, z: 24.078188}
   m_LocalScale: {x: 0.49887, y: 0.49887, z: 0.49887}
   m_Children: []
   m_Father: {fileID: 1679191316}
@@ -39699,8 +39528,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   goingDown: -1
   lowerBound: 51.5
-  upperBound: 55.5
-  speed: 0.04
+  upperBound: 63
+  speed: 0.15
 --- !u!1 &2088020548
 GameObject:
   m_ObjectHideFlags: 0
@@ -40760,7 +40589,7 @@ MonoBehaviour:
   goingDown: -1
   lowerBound: 8.5
   upperBound: 13.5
-  speed: 0.03
+  speed: 0.07
 --- !u!114 &2123903969
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -40865,7 +40694,6 @@ GameObject:
   m_Component:
   - component: {fileID: 2137924210}
   - component: {fileID: 2137924209}
-  - component: {fileID: 2137924211}
   m_Layer: 7
   m_Name: tilesSeparate.cdr_8 (1)
   m_TagString: Ground
@@ -40938,35 +40766,6 @@ Transform:
   m_Father: {fileID: 1679191316}
   m_RootOrder: 191
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!60 &2137924211
-PolygonCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2137924208}
-  m_Enabled: 1
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_UsedByComposite: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2, y: 2}
-    newSize: {x: 2, y: 2}
-    adaptiveTilingThreshold: 0.5
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1, y: 1}
-      - {x: -1, y: -1}
-      - {x: 1, y: -1}
-      - {x: 1, y: 1}
 --- !u!1 &2144993668
 GameObject:
   m_ObjectHideFlags: 0

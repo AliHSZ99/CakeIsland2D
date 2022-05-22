@@ -17,7 +17,7 @@ public class MoveHorizontalPlat : MonoBehaviour
     }
 
     // Update is called once per frame
-    void Update()
+    void FixedUpdate()
     {
         float xPosition = transform.localPosition.x;
 
