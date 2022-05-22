@@ -49,6 +49,9 @@ public class PlayerController : MonoBehaviour
     private GameObject unlockCheckpoint2;
     private GameObject unlockCheckpoint3;
 
+    // This is the platform in level 2 that should start going up and down when the player hits the trigger. 
+    public GameObject goUpPlatformLevel2; 
+
     //Hello
 
     // Start is called before the first frame update
@@ -131,6 +134,11 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }
+        // Make player go back to the checkpoint they are at when they hit a spike 
+        if (collision.gameObject.tag == "spike")
+        {
+            this.transform.position = respawnPoint.transform.position;
+        }
 
         if (collision.gameObject.tag == "Enemy")
         {
@@ -153,6 +161,10 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "doorLevel1")
         {
             SceneManager.LoadScene("Level1End");
+        }
+        if (collision.gameObject.tag == "doorLevel2")
+        {
+            SceneManager.LoadScene("Level2End");
         }
     }
 
@@ -200,6 +212,11 @@ public class PlayerController : MonoBehaviour
             respawnPoint = unlockCheckpoint3;
             Destroy(collision.gameObject);
             unlockCheckpoint3.SetActive(true);
+        }
+        
+        // To check if the platform in level 2 should go up. 
+        if (collision.gameObject.tag == "MoveUpTrigger") {
+            goUpPlatformLevel2.GetComponent<MoveVerticalPlat>().enabled = true;
         }
     }
 }
