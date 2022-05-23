@@ -13,12 +13,14 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField]
     public GameObject respawnPoint;
 
+    public string direction;
+
     // Start is called before the first frame update
     void Start()
     {
         Destroy(gameObject, bulletLife);
 
-        string direction = StationaryEnemyController.facingDirection;
+        Debug.Log("ENEMY DIRECTION " + direction);
 
         if (direction.Equals("right"))
         {
@@ -41,7 +43,7 @@ public class EnemyBulletController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Player Shot.");
-            collision.gameObject.transform.position = respawnPoint.transform.position;
+            /*collision.gameObject.transform.position = respawnPoint.transform.position;*/
             Destroy(gameObject);
         }
         if(collision.gameObject.tag == "Enemy")

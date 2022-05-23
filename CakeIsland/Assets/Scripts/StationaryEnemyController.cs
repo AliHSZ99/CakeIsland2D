@@ -49,11 +49,7 @@ public class StationaryEnemyController : MonoBehaviour
 
     void FixedUpdate()
     {
-        if (isPlayerInSight())
-        {
-            shoot();
-        }
-
+        
         if (transform.position.x < player.transform.position.x)
         {
             flip(RIGHT);
@@ -61,6 +57,11 @@ public class StationaryEnemyController : MonoBehaviour
         else
         {
             flip(LEFT);
+        }
+
+        if (isPlayerInSight())
+        {
+            shoot();
         }
     }
 
@@ -111,10 +112,13 @@ public class StationaryEnemyController : MonoBehaviour
 
     void shoot()
     {
+        Debug.Log("CONTROLLER DIRCTION " + facingDirection);
         time += Time.deltaTime;
         if(time >= 0.5)
         {
             time = 0;
+            EnemyBulletController enemyBullet = bullet.GetComponent<EnemyBulletController>();
+            enemyBullet.direction = facingDirection;
             Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
         }      
     }

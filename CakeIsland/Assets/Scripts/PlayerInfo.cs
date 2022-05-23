@@ -22,13 +22,15 @@ public class PlayerInfo : MonoBehaviour
     public Sprite fullHeart;
     public Sprite emptyHeart;
 
+    public static int points;
+
 
     void Start()
     {
         player = GameObject.FindGameObjectWithTag("Player");
         startingTime = 10f;
         currentTime = startingTime;
-        canShoot = false;
+        canShoot = true;
         pc = player.GetComponent<PlayerController>();
         speed = pc.movementSpeed;
         jump = pc.jumpingForce;
@@ -68,13 +70,13 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    public void shoot()
+    /*public void shoot()
     {
         Debug.Log("Powerup has started!");
         timerIsActive = true;
         canShoot = true;
         pc.canShoot = canShoot;
-    }
+    }*/
 
     public void speedBoost()
     {
@@ -97,13 +99,13 @@ public class PlayerInfo : MonoBehaviour
     private void returnToNormal()
     {
         timerIsActive = false;
-        canShoot = false;
+        /*canShoot = false;*/
         speed = 5f;
         jump = 14f;
         startingTime = currentTime = 10f;
 
 
-        pc.canShoot = canShoot;
+        /*pc.canShoot = canShoot;*/
         pc.movementSpeed = speed;
         pc.jumpingForce = jump;
     }

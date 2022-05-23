@@ -139,6 +139,7 @@ MonoBehaviour:
   respawnPoint: {fileID: 6848287053052405637, guid: 9c57175483d927149aa2ebb6270838d0, type: 3}
   castPos: {fileID: 5314173757515857892}
   baseCastDistance: 8
+  name: 
 --- !u!61 &-4824433534171038256
 BoxCollider2D:
   m_ObjectHideFlags: 0

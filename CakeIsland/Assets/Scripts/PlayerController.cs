@@ -23,7 +23,7 @@ public class PlayerController : MonoBehaviour
 
     // The respawn point of the player.
     [SerializeField]
-    public GameObject respawnPoint;
+    public static GameObject respawnPoint;
 
     // The bullet that the player fires.
     public GameObject bullet;
@@ -41,32 +41,34 @@ public class PlayerController : MonoBehaviour
     // This boolean variable is for Dialogue 
     public static bool isCollected;
 
-    // For the point system 
-    public int points;
-    public int previousPoints;
     public TMP_Text pointLabel;
 
     // For unlocked checkpoints
     private GameObject unlockCheckpoint2;
     private GameObject unlockCheckpoint3;
+    public bool isCheckpoint;
 
     // This is the platform in level 2 that should start going up and down when the player hits the trigger. 
     public GameObject goUpPlatformLevel2;
-    public string LevelEnd;
 
     //Hello
 
     // Start is called before the first frame update
     void Start()
     {
+        respawnPoint = GameObject.FindGameObjectWithTag("StartCheckpoint");
         rigidBody = GetComponent<Rigidbody2D>();
-        canShoot = false;
+        canShoot = true;
         facingRight = true;
+        pointLabel.text = "Points: " + PlayerInfo.points;
 
-        /*unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
-        unlockCheckpoint2.SetActive(false);
-        unlockCheckpoint3 = GameObject.FindGameObjectWithTag("UnlockCheckpoint3");
-        unlockCheckpoint3.SetActive(false);*/
+        if (isCheckpoint)
+        {
+            unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
+            unlockCheckpoint2.SetActive(false);
+            unlockCheckpoint3 = GameObject.FindGameObjectWithTag("UnlockCheckpoint3");
+            unlockCheckpoint3.SetActive(false);
+        }
     }
 
     // Update is called once per frame
@@ -148,18 +150,7 @@ public class PlayerController : MonoBehaviour
                 }
             } else
             {
-                if (PlayerInfo.health <= 0)
-                {
-                    //Checks if there's enough points to revive
-                    if (points >= 100)
-                    {
-                        SceneManager.LoadScene("DeathScreen");
-                    } else
-                    {
-                        SceneManager.LoadScene("GameOverScreen");
-
-                    }
-                }
+                checkPlayerStatus();
             }
 
             Debug.Log("Out of play area.");
@@ -175,18 +166,16 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            gameObject.transform.position = respawnPoint.transform.position;
+            this.transform.position = respawnPoint.transform.position;
             PlayerInfo.health--;
             checkPlayerStatus();
         }
 
-        if (collision.gameObject.tag == "Coin")
+        if (collision.gameObject.tag == "bullet")
         {
-            Object.Destroy(collision.gameObject);
-            isCollected = true;
-            points += 20;
-            Debug.Log(points);
-            pointLabel.text = "Points: " + points;
+            this.transform.position = respawnPoint.transform.position;
+            PlayerInfo.health--;
+            checkPlayerStatus();
         }
 
         if (collision.gameObject.tag == "door")
@@ -195,7 +184,6 @@ public class PlayerController : MonoBehaviour
         }
         if (collision.gameObject.tag == "doorLevel1")
         {
-            previousPoints = points;
             SceneManager.LoadScene("Level1End");
         }
         if (collision.gameObject.tag == "doorLevel2")
@@ -254,13 +242,31 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "MoveUpTrigger") {
             goUpPlatformLevel2.GetComponent<MoveVerticalPlat>().enabled = true;
         }
+
+        if (collision.gameObject.tag == "Coin")
+        {
+            Object.Destroy(collision.gameObject);
+            isCollected = true;
+            PlayerInfo.points += 20;
+            Debug.Log(PlayerInfo.points);
+            pointLabel.text = "Points: " + PlayerInfo.points;
+        }
     }
 
     public void checkPlayerStatus()
     {
-        if (PlayerInfo.health == 0)
+        if (PlayerInfo.health <= 0)
         {
-            SceneManager.LoadScene(LevelEnd);
+            //Checks if there's enough points to revive
+            if (PlayerInfo.points >= 100)
+            {
+                SceneManager.LoadScene("DeathScreen");
+            }
+            else
+            {
+                SceneManager.LoadScene("GameOverScreen");
+
+            }
         }
     }
 }

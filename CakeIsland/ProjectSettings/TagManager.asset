@@ -24,6 +24,7 @@ TagManager:
   - doorLevel2
   - MoveUpTrigger
   - Coin
+  - StartCheckpoint
   layers:
   - Default
   - TransparentFX

@@ -14,10 +14,10 @@ public class Powerup : MonoBehaviour
         {
             type = "heart";
         }
-        else if(tag == "shoot")
+        /*else if(tag == "shoot")
         {
             type = "shoot";
-        }
+        }*/
         else if(tag == "speed")
         {
             type = "speed";
@@ -34,30 +34,30 @@ public class Powerup : MonoBehaviour
         
     }
 
-    private void OnCollisionEnter2D(Collision2D collision)
+    private void OnTriggerEnter2D(Collider2D collision)
     {
-        if(collision.gameObject.tag == "Player")
+        if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Touched Collectible.");
 
-            if(type == "heart")
+            if (type == "heart")
             {
-                addLife(collision);
+                addLife(collision.gameObject);
             }
 
-            if(type == "shoot")
+            /*if (type == "shoot")
             {
-                shoot(collision);
+                shoot(collision.gameObject);
+            }*/
+
+            if (type == "speed")
+            {
+                speedBoost(collision.gameObject);
             }
 
-            if(type == "speed")
+            if (type == "jump")
             {
-                speedBoost(collision);
-            }
-
-            if(type == "jump")
-            {
-                jumpBoost(collision);
+                jumpBoost(collision.gameObject);
             }
         }
 
@@ -67,30 +67,30 @@ public class Powerup : MonoBehaviour
         }
     }
 
-    void addLife(Collision2D player)
+    void addLife(GameObject player)
     {
-        PlayerInfo info = player.gameObject.GetComponent<PlayerInfo>();
+        PlayerInfo info = player.GetComponent<PlayerInfo>();
         info.addLife();
         Destroy(gameObject);
     }
 
-    void shoot(Collision2D player)
+    /*void shoot(GameObject player)
     {
-        PlayerInfo info = player.gameObject.GetComponent<PlayerInfo>();
+        PlayerInfo info = player.GetComponent<PlayerInfo>();
         info.shoot();
         Destroy(gameObject);
-    }
+    }*/
 
-    void speedBoost(Collision2D player)
+    void speedBoost(GameObject player)
     {
-        PlayerInfo info = player.gameObject.GetComponent<PlayerInfo>();
+        PlayerInfo info = player.GetComponent<PlayerInfo>();
         info.speedBoost();
         Destroy(gameObject);
     }
 
-    void jumpBoost(Collision2D player)
+    void jumpBoost(GameObject player)
     {
-        PlayerInfo info = player.gameObject.GetComponent<PlayerInfo>();
+        PlayerInfo info = player.GetComponent<PlayerInfo>();
         info.jumpBoost();
         Destroy(gameObject);
     }

@@ -5,17 +5,17 @@ using UnityEngine;
 public class DropPowerup : MonoBehaviour
 {
     public int rand;
-    public int dropThreshold, lifeThreshold, shootThreshold, speedThreshold, jumpThreshold;
+    public int dropThreshold, lifeThreshold, /*shootThreshold,*/ speedThreshold, jumpThreshold;
     public GameObject lifePowerup, shootPowerup, jumpPowerup, speedPowerup;
 
     // Start is called before the first frame update
     void Start()
     {
         dropThreshold = 33;
-        lifeThreshold = 20;
-        shootThreshold = 40;
-        speedThreshold = 60;
-        jumpThreshold = 80;
+        lifeThreshold = 33;
+        /*shootThreshold = 40;*/
+        speedThreshold = 66;
+        jumpThreshold = 100;
     }
 
     // Update is called once per frame
@@ -41,11 +41,11 @@ public class DropPowerup : MonoBehaviour
         {
             dropLife();
         }
-        else if (rand > lifeThreshold && rand <= shootThreshold)
+        /*else if (rand > lifeThreshold && rand <= shootThreshold)
         {
             dropShoot();
-        }
-        else if (rand > shootThreshold && rand <= speedThreshold)
+        }*/
+        else if (rand > lifeThreshold && rand <= speedThreshold)
         {
             dropSpeed();
         }
@@ -60,10 +60,10 @@ public class DropPowerup : MonoBehaviour
         Instantiate(lifePowerup, transform.position, transform.rotation);
     }
 
-    public void dropShoot()
+    /*public void dropShoot()
     {
         Instantiate(shootPowerup, transform.position, transform.rotation);
-    }
+    }*/
 
     public void dropSpeed()
     {
