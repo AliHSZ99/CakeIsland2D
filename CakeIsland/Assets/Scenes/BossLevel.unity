@@ -2128,7 +2128,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 10
+  orthographic size: 16.436338
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -4855,8 +4855,10 @@ MonoBehaviour:
   firePoint: {fileID: 842328733}
   playerAnimator: {fileID: 1281462158}
   points: 0
+  previousPoints: 0
   pointLabel: {fileID: 0}
   goUpPlatformLevel2: {fileID: 0}
+  LevelEnd: 
 --- !u!60 &1281462156
 PolygonCollider2D:
   m_ObjectHideFlags: 0
