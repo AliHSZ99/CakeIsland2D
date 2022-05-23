@@ -89,7 +89,7 @@ public class PlayerInfo : MonoBehaviour
     {
         Debug.Log("Powerup has started!");
         timerIsActive = true;
-        jump = 10f;
+        jump = 20f;
 
         pc.jumpingForce = jump;
     }
@@ -99,7 +99,7 @@ public class PlayerInfo : MonoBehaviour
         timerIsActive = false;
         canShoot = false;
         speed = 5f;
-        jump = 6.5f;
+        jump = 14f;
         startingTime = currentTime = 10f;
 
 
