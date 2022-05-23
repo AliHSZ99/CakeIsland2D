@@ -61,6 +61,7 @@ public class PlayerController : MonoBehaviour
     {
         rigidBody = GetComponent<Rigidbody2D>();
         canShoot = false;
+        facingRight = true;
 
         /*unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
         unlockCheckpoint2.SetActive(false);
@@ -128,15 +129,38 @@ public class PlayerController : MonoBehaviour
         {
             PlayerInfo.health--;
 
-            if (LevelEnd.Equals("Null") && PlayerInfo.health == 0)
-            {
-                PlayerInfo.health = 3;
-            }
-            else
-            {
-                checkPlayerStatus();
-            }
+            // This code gives a bug when the player dies. We use the code below 
+            /* if (LevelEnd.Equals("Null") && PlayerInfo.health == 0)
+             {
+                 PlayerInfo.health = 3;
+             }
+             else
+             {
+                 checkPlayerStatus();
+             }*/
 
+            // If the scene is Tutorial, it just resets the health of the player.
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialLevel"))
+            {
+                if (PlayerInfo.health <= 0 )
+                {
+                    PlayerInfo.health = 3;
+                }
+            } else
+            {
+                if (PlayerInfo.health <= 0)
+                {
+                    //Checks if there's enough points to revive
+                    if (points >= 100)
+                    {
+                        SceneManager.LoadScene("DeathScreen");
+                    } else
+                    {
+                        SceneManager.LoadScene("GameOverScreen");
+
+                    }
+                }
+            }
 
             Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
