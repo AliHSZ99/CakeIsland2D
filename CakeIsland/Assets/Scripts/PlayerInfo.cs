@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class PlayerInfo : MonoBehaviour
 {
@@ -12,11 +13,16 @@ public class PlayerInfo : MonoBehaviour
     public GameObject player;
     public PlayerController pc;
 
-    public int timer;
-    public bool timerIsActive;
+    // timer for each powerup
+    public int speedTimer;
+    public int jumpTimer;
 
-    public float startingTime;
-    public float currentTime;
+    public bool speedTimerIsActive;
+    public bool jumpTimerIsActive;
+    public float speedStartingTime;
+    public float jumpStartingTime;
+    public float speedCurrentTime;
+    public float jumpCurrentTime;
 
     public Image[] hearts;
     public Sprite fullHeart;
@@ -24,18 +30,28 @@ public class PlayerInfo : MonoBehaviour
 
     public static int points;
 
+    // for the ui text
+    public TMP_Text timerLabel;
 
+    public float speedTimeLeft;
+    public float jumpTimeLeft;
+    
     void Start()
     {
+        timerLabel.text = "Jump boost: 0 seconds\nSpeed boost: 0 seconds";
+        speedTimeLeft = 10f;
+        jumpTimeLeft = 10f;
         player = GameObject.FindGameObjectWithTag("Player");
-        startingTime = 10f;
-        currentTime = startingTime;
+        speedStartingTime = jumpStartingTime = 10f;
+        speedCurrentTime = speedStartingTime;
+        jumpCurrentTime = jumpStartingTime;
         canShoot = true;
         pc = player.GetComponent<PlayerController>();
         speed = pc.movementSpeed;
         jump = pc.jumpingForce;
-        timer = 10;
-        timerIsActive = false;
+        speedTimer = 10;
+        jumpTimer = 10;
+        speedTimerIsActive = jumpTimerIsActive = false;
     }
 
     // Update is called once per frame
@@ -43,9 +59,29 @@ public class PlayerInfo : MonoBehaviour
     {
         updateLives();
 
-        if (timerIsActive)
+        if (!speedTimerIsActive && !jumpTimerIsActive) {
+            timerLabel.text = "Jump boost: " + 0 + " seconds\nSpeed boost: " + 0 + " seconds";
+        }
+        else if (speedTimerIsActive && !jumpTimerIsActive) 
         {
-            countdownTimer();
+            countdownSpeedTimer();
+            setTimerLabel("Speed");
+        } else if (!speedTimerIsActive && jumpTimerIsActive) 
+        {
+            countdownJumpTimer();
+            setTimerLabel("Jump");
+        } else {
+            countdownSpeedTimer();
+            countdownJumpTimer();
+        }
+    }
+
+    private void setTimerLabel(string boost)
+    {
+        if (boost.Equals("Speed")) {
+            timerLabel.text = "Jump boost: " + 0 + " seconds\nSpeed boost: " + (int)speedTimeLeft + " seconds";
+        } else if (boost.Equals("Jump")) {
+            timerLabel.text = "Jump boost: " + (int)jumpTimeLeft + " seconds\nSpeed boost: " + 0 + " seconds";
         }
     }
 
@@ -70,18 +106,10 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
-    /*public void shoot()
-    {
-        Debug.Log("Powerup has started!");
-        timerIsActive = true;
-        canShoot = true;
-        pc.canShoot = canShoot;
-    }*/
-
     public void speedBoost()
     {
         Debug.Log("Powerup has started!");
-        timerIsActive = true;
+        speedTimerIsActive = true;
         speed = 10f;
 
         pc.movementSpeed = speed;
@@ -90,32 +118,48 @@ public class PlayerInfo : MonoBehaviour
     public void jumpBoost()
     {
         Debug.Log("Powerup has started!");
-        timerIsActive = true;
+        jumpTimerIsActive = true;
         jump = 20f;
 
         pc.jumpingForce = jump;
     }
 
-    private void returnToNormal()
+    private void returnSpeedToNormal()
     {
-        timerIsActive = false;
-        /*canShoot = false;*/
+        speedTimerIsActive = false;
         speed = 5f;
-        jump = 14f;
-        startingTime = currentTime = 10f;
+        speedStartingTime = speedCurrentTime = 10f;
 
-
-        /*pc.canShoot = canShoot;*/
         pc.movementSpeed = speed;
+    }
+
+    private void returnJumpToNormal() {
+        jumpTimerIsActive = false;
+        jump = 14f;
+        jumpStartingTime = jumpCurrentTime = 10f;
+
         pc.jumpingForce = jump;
     }
 
-    private void countdownTimer()
+    private void countdownSpeedTimer()
     {
-        currentTime -= 1 * Time.deltaTime;
-        if((int)currentTime == 0)
+        speedTimeLeft -= 1 * Time.deltaTime;
+        speedCurrentTime -= 1 * Time.deltaTime;
+        timerLabel.text = "Jump boost: " + (int)jumpTimeLeft + " seconds\nSpeed boost: " + (int)speedTimeLeft + " seconds";
+        if((int)speedCurrentTime == 0)
         {
-            returnToNormal();   
+            returnSpeedToNormal();   
+        }
+    }
+
+    private void countdownJumpTimer()
+    {
+        jumpTimeLeft -= 1 * Time.deltaTime;
+        jumpCurrentTime -= 1 * Time.deltaTime;
+        timerLabel.text = "Jump boost: " + (int)jumpTimeLeft + " seconds\nSpeed boost: " + (int)speedTimeLeft + " seconds";
+        if((int)jumpCurrentTime == 0)
+        {
+            returnJumpToNormal();   
         }
     }
 }

@@ -64,7 +64,9 @@ public class MainMenu : MonoBehaviour
     // Method that lets the player try again. 
     // Here, we are supposed to check which level the player is on and check if they player has enough coins.
     public void TryAgain() {
-
+        PlayerInfo.points = PlayerInfo.points - 100;
+        SceneManager.LoadScene(PlayerController.previousScene);
+        PlayerInfo.health = 3; 
     }
 
 }

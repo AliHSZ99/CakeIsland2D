@@ -52,10 +52,20 @@ public class PlayerController : MonoBehaviour
     public GameObject goUpPlatformLevel2;
 
     //Hello
+    // variable to check which scene is loaded. 
+    public static string previousScene;
+
+    // FOR SHOOTING DELAY
+    public float fireRate;
+    public float nextShot;
+
 
     // Start is called before the first frame update
     void Start()
     {
+        fireRate = 1f; 
+        nextShot = -1f;
+        previousScene = SceneManager.GetActiveScene().name;
         respawnPoint = GameObject.FindGameObjectWithTag("StartCheckpoint");
         rigidBody = GetComponent<Rigidbody2D>();
         canShoot = true;
@@ -98,24 +108,19 @@ public class PlayerController : MonoBehaviour
 
         // For jumping 
 
-        if (Input.GetButtonDown("Jump") && isJumping == false)
+        if (Input.GetButtonDown("Jump") && !isJumping)
         {
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
             audioSources[1].Play();
-        }
-        else if (!Input.GetButtonDown("Jump") && isJumping == false)
-        {
-            playerAnimator.SetBool("IsJumping", false);
+            isJumping = true;
         }
 
         if (Input.GetButtonDown("Fire1") && (canShoot || canShootBoss))
         {
             Debug.Log("Player can shoot!");
-            playerAnimator.SetBool("IsShooting", true);
             shoot();
             audioSources[0].Play();
             StartCoroutine(stopShootingForm());
-
         }
     }
 
@@ -192,15 +197,6 @@ public class PlayerController : MonoBehaviour
         }
     }
 
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //Checks if the player is not touching the ground. This prevents the character to jump on the air
-        if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = true;
-        }
-    }
-
     void flip()
     {
         Vector3 currentScale = gameObject.transform.localScale;
@@ -212,13 +208,16 @@ public class PlayerController : MonoBehaviour
     
     void shoot()
     {
-        Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
-        playerAnimator.SetBool("IsShooting", true);
+        if (Time.time > nextShot) {
+            Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            playerAnimator.SetBool("IsShooting", true);
+            nextShot = Time.time + fireRate;
+        }
     }
 
     public IEnumerator stopShootingForm()
     {
-        yield return new WaitForSeconds(0.2f);
+        yield return new WaitForSeconds(0.5f);
         playerAnimator.SetBool("IsShooting", false);
     }
 
@@ -265,6 +264,8 @@ public class PlayerController : MonoBehaviour
             else
             {
                 SceneManager.LoadScene("GameOverScreen");
+                PlayerInfo.points = 0;
+                PlayerInfo.health = 3;
 
             }
         }

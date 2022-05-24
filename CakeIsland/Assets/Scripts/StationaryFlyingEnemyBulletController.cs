@@ -17,6 +17,7 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        Debug.Log("bullet shot");
         speed = 50f;
         bulletLife = 3f;
         player = GameObject.FindGameObjectWithTag("Player");

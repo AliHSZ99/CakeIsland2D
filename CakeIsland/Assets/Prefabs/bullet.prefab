@@ -16,7 +16,7 @@ GameObject:
   - component: {fileID: 2446169473840395101}
   m_Layer: 0
   m_Name: bullet
-  m_TagString: bullet
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -163,10 +163,10 @@ MonoBehaviour:
   rand: 0
   dropThreshold: 0
   lifeThreshold: 0
-  shootThreshold: 0
   speedThreshold: 0
   jumpThreshold: 0
+  coinThreshold: 0
   lifePowerup: {fileID: 2734992300166091579, guid: 17397361b9d63a04a8a63889002e4fd7, type: 3}
-  shootPowerup: {fileID: 2734992300166091579, guid: c472dced88b1a4248b27468b417cc2af, type: 3}
+  coinPowerup: {fileID: 1860394016375271380, guid: e1b1785922b36514c95d098c59887dda, type: 3}
   jumpPowerup: {fileID: 2734992300166091579, guid: 8c227bde08845b74bb0ee83ceeace2c6, type: 3}
   speedPowerup: {fileID: 2734992300166091579, guid: 7fb9a6697c4fa0b4394985f0d082e0c9, type: 3}
