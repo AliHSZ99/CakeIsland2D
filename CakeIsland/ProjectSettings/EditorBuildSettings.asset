@@ -5,40 +5,40 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Settings.unity
     guid: b0003a911f4e9644281a3f66d9d290ca
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1End.unity
     guid: 3398b50601f301044b47118950cf892f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2.unity
     guid: 2c3d9f6af41540744942eeacfb16ee04
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BossLevel.unity
     guid: 2bc23e286b7206046b75a5aa7528932f
   - enabled: 1
     path: Assets/Scenes/DeathScreen.unity
     guid: 22aca2c060775c043b7a088543cc5aef
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/GameOverScreen.unity
     guid: 41e57d48f3e6e544282eb4beba9b11c1
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level1.unity
     guid: 6fd90324566cae74c9a27d199f241488
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Level2End.unity
     guid: 1376bef3e7713174dbe2d2bff29c3247
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/MainMenu.unity
     guid: 666eab97fccc4d947b8c8d1b8837c566
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialLevel.unity
     guid: 93f765d8849eeb74bb734dec69bbf6c6
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/TutorialLevelEnd.unity
     guid: 71668a05d1920314bad51e1357d9aba3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/WinScreen.unity
     guid: f9bffdaebafe46d4483d913106dd4fb8
   m_configObjects: {}
