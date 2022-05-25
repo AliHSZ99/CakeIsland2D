@@ -75,7 +75,7 @@ public class PlayerController : MonoBehaviour
         facingRight = true;
         pointLabel.text = "Points: " + PlayerInfo.points;
 
-        if (isCheckpoint && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossLevel") )
+        if (isCheckpoint && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossLevel") && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("TutorialLevel"))
         {
             unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
             unlockCheckpoint2.SetActive(false);
