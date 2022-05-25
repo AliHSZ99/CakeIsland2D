@@ -59,6 +59,9 @@ public class PlayerController : MonoBehaviour
     public float fireRate;
     public float nextShot;
 
+    public GameObject bottomPlayer;
+    public LayerMask layerMask;
+
 
     // Start is called before the first frame update
     void Start()
@@ -72,7 +75,7 @@ public class PlayerController : MonoBehaviour
         facingRight = true;
         pointLabel.text = "Points: " + PlayerInfo.points;
 
-        if (isCheckpoint)
+        if (isCheckpoint && SceneManager.GetActiveScene() != SceneManager.GetSceneByName("BossLevel") )
         {
             unlockCheckpoint2 = GameObject.FindGameObjectWithTag("UnlockCheckpoint2");
             unlockCheckpoint2.SetActive(false);
@@ -112,25 +115,29 @@ public class PlayerController : MonoBehaviour
         {
             rigidBody.AddForce(new Vector2(0, jumpingForce), ForceMode2D.Impulse);
             audioSources[1].Play();
-            isJumping = true;
+            //isJumping = true;
         }
 
         if (Input.GetButtonDown("Fire1") && (canShoot || canShootBoss))
         {
             Debug.Log("Player can shoot!");
             shoot();
-            audioSources[0].Play();
             StartCoroutine(stopShootingForm());
         }
+    }
+
+    private void FixedUpdate()
+    {
+        raycastJumping();
     }
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
         //Checks if the player is touching the ground. This prevents the character to jump on the air
-        if (collision.gameObject.CompareTag("Ground"))
+        /*if (collision.gameObject.CompareTag("Ground"))
         {
             isJumping = false;
-        }       
+        }      */ 
 
         if (collision.gameObject.tag == "edge")
         {
@@ -171,9 +178,22 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Enemy")
         {
-            this.transform.position = respawnPoint.transform.position;
-            PlayerInfo.health--;
-            checkPlayerStatus();
+            // If the scene is Tutorial, it just resets the health of the player.
+            if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialLevel"))
+            {
+                PlayerInfo.health--;
+                if (PlayerInfo.health <= 0)
+                {
+                    PlayerInfo.health = 3;
+                }
+                this.transform.position = respawnPoint.transform.position;
+            }
+            else
+            {
+                PlayerInfo.health--;
+                this.transform.position = respawnPoint.transform.position;
+                checkPlayerStatus();
+            }
         }
 
         if (collision.gameObject.tag == "bullet")
@@ -185,14 +205,17 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "door")
         {
+            PlayerInfo.health = 3;
             SceneManager.LoadScene("TutorialLevelEnd");
         }
         if (collision.gameObject.tag == "doorLevel1")
         {
+            PlayerInfo.health = 3;
             SceneManager.LoadScene("Level1End");
         }
         if (collision.gameObject.tag == "doorLevel2")
         {
+            PlayerInfo.health = 3;
             SceneManager.LoadScene("Level2End");
         }
     }
@@ -210,6 +233,7 @@ public class PlayerController : MonoBehaviour
     {
         if (Time.time > nextShot) {
             Instantiate(bullet, firePoint.transform.position, firePoint.transform.rotation);
+            audioSources[0].Play();
             playerAnimator.SetBool("IsShooting", true);
             nextShot = Time.time + fireRate;
         }
@@ -250,6 +274,15 @@ public class PlayerController : MonoBehaviour
             Debug.Log(PlayerInfo.points);
             pointLabel.text = "Points: " + PlayerInfo.points;
         }
+
+        if (collision.gameObject.tag == "star")
+        {
+            Object.Destroy(collision.gameObject);
+            isCollected = true;
+            PlayerInfo.points += 40;
+            Debug.Log(PlayerInfo.points);
+            pointLabel.text = "Points: " + PlayerInfo.points;
+        }
     }
 
     public void checkPlayerStatus()
@@ -268,6 +301,18 @@ public class PlayerController : MonoBehaviour
                 PlayerInfo.health = 3;
 
             }
+        }
+    }
+    public void raycastJumping()
+    {
+
+        if (Physics2D.Raycast(bottomPlayer.transform.position, Vector2.down, 1f, layerMask))
+        {
+            isJumping = false;
+        }
+        else
+        {
+            isJumping = true;
         }
     }
 }

@@ -25,6 +25,7 @@ TagManager:
   - MoveUpTrigger
   - Coin
   - StartCheckpoint
+  - PlayerBullet
   layers:
   - Default
   - TransparentFX

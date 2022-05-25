@@ -92,13 +92,24 @@ public class BossController : MonoBehaviour
 
     public static void PlayerDied()
     {
-        PlayerController.canShootBoss = false;
-        SceneManager.LoadScene("GameOverScreen");
+        if(PlayerInfo.points >= 100)
+        {
+            PlayerInfo.health = 3;
+            SceneManager.LoadScene("DeathScreen");
+        }
+        else
+        {
+            PlayerController.canShootBoss = false;
+            PlayerInfo.health = 3;
+            SceneManager.LoadScene("GameOverScreen");
+        }
     }
 
     public static void BossDied()
     {
+        PlayerInfo.health = 3;
         PlayerController.canShootBoss = false;
+        PlayerInfo.points = 0;
         SceneManager.LoadScene("WinScreen");
     }
 
@@ -122,7 +133,7 @@ public class BossController : MonoBehaviour
 
     private void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.gameObject.tag == "bullet")
+        if (collision.gameObject.tag == "PlayerBullet")
         {
             if (BossInfo.health == 1)
             {
