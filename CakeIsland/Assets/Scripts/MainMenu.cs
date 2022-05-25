@@ -20,12 +20,14 @@ public class MainMenu : MonoBehaviour
     // Loads the tutorial level scene
     public void PlayGame()
     {
+        PlayerInfo.points = 0;
         SceneManager.LoadScene("TutorialLevel");
     }
 
     // Exits the game no matter which scene it is in
     public void ExitGame()
     {
+        PlayerInfo.points = 0;
         Application.Quit();
     }
 
@@ -38,6 +40,7 @@ public class MainMenu : MonoBehaviour
     // Brings the user back to the main menu
     public void BackToMenu()
     {
+        PlayerInfo.points = 0;
         SceneManager.LoadScene("MainMenu");
     }
 
@@ -58,6 +61,7 @@ public class MainMenu : MonoBehaviour
     }
 
     public void WinScreen() {
+        PlayerInfo.points = 0;
         SceneManager.LoadScene("WinScreen");
     }
 
@@ -67,6 +71,13 @@ public class MainMenu : MonoBehaviour
         PlayerInfo.points = PlayerInfo.points - 100;
         SceneManager.LoadScene(PlayerController.previousScene);
         PlayerInfo.health = 3; 
+    }
+
+    public void RestartGame()
+    {
+        PlayerInfo.points = 0;
+        PlayerInfo.health = 3;
+        SceneManager.LoadScene("Level1");
     }
 
 }

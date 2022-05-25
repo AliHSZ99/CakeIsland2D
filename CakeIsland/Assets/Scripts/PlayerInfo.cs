@@ -129,6 +129,7 @@ public class PlayerInfo : MonoBehaviour
         speedTimerIsActive = false;
         speed = 5f;
         speedStartingTime = speedCurrentTime = 10f;
+        speedTimeLeft = 10f;
 
         pc.movementSpeed = speed;
     }
@@ -137,6 +138,7 @@ public class PlayerInfo : MonoBehaviour
         jumpTimerIsActive = false;
         jump = 14f;
         jumpStartingTime = jumpCurrentTime = 10f;
+        jumpTimeLeft = 10f;
 
         pc.jumpingForce = jump;
     }
