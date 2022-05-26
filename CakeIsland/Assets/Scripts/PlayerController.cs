@@ -142,6 +142,7 @@ public class PlayerController : MonoBehaviour
         if (collision.gameObject.tag == "edge")
         {
             PlayerInfo.health--;
+            audioSources[2].Play();
 
             // This code gives a bug when the player dies. We use the code below 
             /* if (LevelEnd.Equals("Null") && PlayerInfo.health == 0)
@@ -173,11 +174,13 @@ public class PlayerController : MonoBehaviour
         {
             this.transform.position = respawnPoint.transform.position;
             PlayerInfo.health--;
+            audioSources[2].Play();
             checkPlayerStatus();
         }
 
         if (collision.gameObject.tag == "Enemy")
         {
+            audioSources[2].Play();
             // If the scene is Tutorial, it just resets the health of the player.
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialLevel"))
             {
@@ -198,6 +201,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "bullet")
         {
+            audioSources[2].Play();
             this.transform.position = respawnPoint.transform.position;
             PlayerInfo.health--;
             checkPlayerStatus();
@@ -249,6 +253,7 @@ public class PlayerController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Checkpoint2")
         {
+            audioSources[3].Play();
             respawnPoint = unlockCheckpoint2;
             Destroy(collision.gameObject);
             unlockCheckpoint2.SetActive(true);
@@ -256,6 +261,7 @@ public class PlayerController : MonoBehaviour
 
         if (collision.gameObject.tag == "Checkpoint3")
         {
+            audioSources[3].Play();
             respawnPoint = unlockCheckpoint3;
             Destroy(collision.gameObject);
             unlockCheckpoint3.SetActive(true);
@@ -271,6 +277,7 @@ public class PlayerController : MonoBehaviour
             Object.Destroy(collision.gameObject);
             isCollected = true;
             PlayerInfo.points += 20;
+            audioSources[4].Play();
             Debug.Log(PlayerInfo.points);
             pointLabel.text = "Points: " + PlayerInfo.points;
         }
@@ -280,6 +287,7 @@ public class PlayerController : MonoBehaviour
             Object.Destroy(collision.gameObject);
             isCollected = true;
             PlayerInfo.points += 40;
+            audioSources[5].Play();
             Debug.Log(PlayerInfo.points);
             pointLabel.text = "Points: " + PlayerInfo.points;
         }

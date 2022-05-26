@@ -5,11 +5,14 @@ using UnityEngine;
 public class Powerup : MonoBehaviour
 {
     public string type;
-
+    public AudioSource[] playerSounds;
 
     // Start is called before the first frame update
     void Start()
     {
+
+        playerSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().audioSources;
+
         if(tag == "heart")
         {
             type = "heart";
@@ -42,6 +45,7 @@ public class Powerup : MonoBehaviour
 
             if (type == "heart")
             {
+                playerSounds[6].Play();
                 addLife(collision.gameObject);
             }
 
@@ -52,11 +56,13 @@ public class Powerup : MonoBehaviour
 
             if (type == "speed")
             {
+                playerSounds[8].Play();
                 speedBoost(collision.gameObject);
             }
 
             if (type == "jump")
             {
+                playerSounds[7].Play();
                 jumpBoost(collision.gameObject);
             }
         }
