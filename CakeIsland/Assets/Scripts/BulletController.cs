@@ -29,9 +29,9 @@ public class BulletController : MonoBehaviour
     {
         //Sounds for enemies
         if (SceneManager.GetActiveScene().name != "BossLevel" && SceneManager.GetActiveScene().name != "TutorialLevel") {
-            stationaryEnemy = GameObject.Find("StationaryEnemy");
-            flyingEnemySound = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
-            enemySound = GameObject.Find("enemy").GetComponent<EnemyController>().enemyHitSound;
+            stationaryEnemy = GameObject.Find("StationaryEnemyTemp");
+            flyingEnemySound = GameObject.Find("FlyingEnemyTemp").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
+            enemySound = GameObject.Find("enemyTemp").GetComponent<EnemyController>().enemyHitSound;
             stationaryEnemySound = stationaryEnemy.GetComponent<StationaryEnemyController>().stationaryEnemyHitSound;
         }
 

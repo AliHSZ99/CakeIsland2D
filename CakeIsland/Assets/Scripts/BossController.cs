@@ -95,12 +95,14 @@ public class BossController : MonoBehaviour
         if(PlayerInfo.points >= 100)
         {
             PlayerInfo.health = 3;
+            BossInfo.health = 3;
             SceneManager.LoadScene("DeathScreen");
         }
         else
         {
             PlayerController.canShootBoss = false;
             PlayerInfo.health = 3;
+            BossInfo.health = 3;
             SceneManager.LoadScene("GameOverScreen");
         }
     }

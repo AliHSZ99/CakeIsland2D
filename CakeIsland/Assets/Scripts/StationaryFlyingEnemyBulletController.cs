@@ -19,7 +19,7 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        enemyShoot = GameObject.Find("enemy").GetComponent<EnemyController>().enemyShootSound;
+        enemyShoot = GameObject.Find("enemyTemp").GetComponent<EnemyController>().enemyShootSound;
         enemyShoot.Play();
         Debug.Log("bullet shot");
         speed = 50f;
