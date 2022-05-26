@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class BulletController : MonoBehaviour
 {
@@ -15,9 +16,31 @@ public class BulletController : MonoBehaviour
     [SerializeField]
     public GameObject player;
 
+    GameObject enemy;
+    GameObject flyingEnemy;
+    GameObject stationaryEnemy;
+    AudioSource flyingEnemySound;
+    AudioSource enemySound;
+    AudioSource sound;
+    AudioSource stationaryEnemySound;
+
     // Start is called before the first frame update
     void Start()
     {
+        //Sounds for enemies
+        if (SceneManager.GetActiveScene().name != "BossLevel" && SceneManager.GetActiveScene().name != "TutorialLevel") {
+            stationaryEnemy = GameObject.Find("StationaryEnemy");
+            flyingEnemySound = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
+            enemySound = GameObject.Find("enemy").GetComponent<EnemyController>().enemyHitSound;
+            stationaryEnemySound = stationaryEnemy.GetComponent<StationaryEnemyController>().stationaryEnemyHitSound;
+        }
+
+        if (SceneManager.GetActiveScene().name == "TutorialLevel") {
+            flyingEnemySound = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
+        }
+
+        
+
         dp = GetComponent<DropPowerup>();
 
         Destroy(gameObject, bulletLife);
@@ -46,6 +69,15 @@ public class BulletController : MonoBehaviour
     {
         if(collision.gameObject.tag == "Enemy")
         {
+            string enemyName = collision.gameObject.name;
+            if (enemyName.IndexOf("FlyingEnemy") != -1)  {
+                flyingEnemySound.Play();
+            } else if (enemyName.IndexOf("enemy") != -1) {
+                enemySound.Play();
+            } else if (enemyName.IndexOf("StationaryEnemy") != -1) {
+                stationaryEnemySound.Play();
+            }
+            Debug.Log(collision.gameObject.name);
             Destroy(collision.gameObject);
             dp.dropOrNot();
             Destroy(gameObject);

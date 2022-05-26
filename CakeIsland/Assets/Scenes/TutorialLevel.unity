@@ -1303,6 +1303,18 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 972835751952070470, guid: c98c0652e92b24d48a1eee0dd3549582, type: 3}
+      propertyPath: m_TagString
+      value: Enemy
+      objectReference: {fileID: 0}
+    - target: {fileID: 3393581753703330277, guid: c98c0652e92b24d48a1eee0dd3549582, type: 3}
+      propertyPath: flyingEnemyShootSound
+      value: 
+      objectReference: {fileID: 1068542512}
+    - target: {fileID: 3417227191657123156, guid: c98c0652e92b24d48a1eee0dd3549582, type: 3}
+      propertyPath: m_audioClip
+      value: 
+      objectReference: {fileID: 8300000, guid: e0ba52afb91584abe887167bf92ab721, type: 3}
     - target: {fileID: 8589931594289120378, guid: c98c0652e92b24d48a1eee0dd3549582, type: 3}
       propertyPath: m_RootOrder
       value: 2
@@ -1920,6 +1932,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 990878154}
   m_CullTransparentMesh: 1
+--- !u!82 &1068542512 stripped
+AudioSource:
+  m_CorrespondingSourceObject: {fileID: 3417227191657123156, guid: c98c0652e92b24d48a1eee0dd3549582, type: 3}
+  m_PrefabInstance: {fileID: 516420052}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1221660734
 GameObject:
   m_ObjectHideFlags: 0

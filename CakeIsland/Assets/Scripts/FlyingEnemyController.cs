@@ -9,7 +9,8 @@ public class FlyingEnemyController : MonoBehaviour
     public float speed;
     public GameObject player;
     public Vector2 startingSpot;
-
+    public AudioSource flyingEnemyHitSound;
+    public AudioSource flyingEnemyShootSound;
 
     // Start is called before the first frame update
     void Start()

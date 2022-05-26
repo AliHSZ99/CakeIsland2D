@@ -13,11 +13,16 @@ public class EnemyBulletController : MonoBehaviour
     [SerializeField]
     public GameObject respawnPoint;
 
+    public AudioSource enemyShoot;
+
     public string direction;
 
     // Start is called before the first frame update
     void Start()
     {
+        enemyShoot = GameObject.Find("enemy").GetComponent<EnemyController>().enemyShootSound;
+
+        enemyShoot.Play();
         Destroy(gameObject, bulletLife);
 
         Debug.Log("ENEMY DIRECTION " + direction);

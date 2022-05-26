@@ -11,6 +11,9 @@ public class EnemyController : MonoBehaviour
     const string LEFT = "left";
     const string RIGHT = "right";
 
+    public AudioSource enemyHitSound;
+    public AudioSource enemyShootSound;
+
     string facingDirection;
 
     Vector3 baseScale;

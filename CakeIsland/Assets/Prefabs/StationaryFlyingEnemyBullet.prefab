@@ -74,8 +74,8 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 60
-  m_Sprite: {fileID: 7482667652216324306, guid: 48e93eef0688c4a259cb0eddcd8661f7, type: 3}
-  m_Color: {r: 0.509434, g: 0.0072089583, b: 0.13000067, a: 1}
+  m_Sprite: {fileID: 21300000, guid: 724988716d7294152bd639f146a6c000, type: 3}
+  m_Color: {r: 0.6981132, g: 0.58944464, b: 0.6157628, a: 1}
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
@@ -123,7 +123,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1, y: 1}
+    oldSize: {x: 8, y: 8}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -147,4 +147,5 @@ MonoBehaviour:
   speed: 10
   rb: {fileID: -518437583382667575}
   player: {fileID: 4380750819385241447, guid: 8fa24e4ee2929e5448a8d913b01e73de, type: 3}
+  enemyShoot: {fileID: 0}
   respawnPoint: {fileID: 6848287053052405637, guid: 9c57175483d927149aa2ebb6270838d0, type: 3}

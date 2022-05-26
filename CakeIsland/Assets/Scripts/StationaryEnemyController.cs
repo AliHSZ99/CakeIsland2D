@@ -30,6 +30,8 @@ public class StationaryEnemyController : MonoBehaviour
     [SerializeField]
     float baseCastDistance;
 
+    public AudioSource stationaryEnemyHitSound;
+
 
     // Start is called before the first frame update
     void Start()
