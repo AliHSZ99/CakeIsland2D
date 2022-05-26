@@ -38,6 +38,7 @@ public class BossBulletController : MonoBehaviour
         {
             if (PlayerInfo.health == 1)
             {
+                PlayerInfo.health = 3;
                 BossController.PlayerDied();
             }
             Destroy(gameObject);
