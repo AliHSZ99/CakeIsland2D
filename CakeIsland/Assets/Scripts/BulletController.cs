@@ -36,7 +36,9 @@ public class BulletController : MonoBehaviour
         }
 
         if (SceneManager.GetActiveScene().name == "TutorialLevel") {
-            flyingEnemySound = GameObject.Find("FlyingEnemy").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
+            flyingEnemySound = GameObject.Find("FlyingEnemyTemp").GetComponent<FlyingEnemyController>().flyingEnemyHitSound;
+            enemySound = GameObject.Find("enemyTemp").GetComponent<EnemyController>().enemyHitSound;
+
         }
 
         
