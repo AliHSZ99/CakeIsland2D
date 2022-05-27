@@ -42,8 +42,6 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player Shot.");
-            /*collision.gameObject.transform.position = respawnPoint.transform.position;*/
             Destroy(gameObject);
         }
         if (collision.gameObject.tag == "Ground")

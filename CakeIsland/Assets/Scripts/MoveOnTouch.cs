@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used to keep the player stuck on the platform. 
 public class MoveOnTouch : MonoBehaviour
 {
     // Start is called before the first frame update

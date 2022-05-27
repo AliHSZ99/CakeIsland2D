@@ -4,8 +4,10 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
+// Script with multiple functions. Has the timer of the HUD for powerups, and has health system as well. 
 public class PlayerInfo : MonoBehaviour
 {
+    // variables.
     public static int health = 3;
     public bool canShoot;
     public float speed;
@@ -36,6 +38,7 @@ public class PlayerInfo : MonoBehaviour
     public float speedTimeLeft;
     public float jumpTimeLeft;
     
+    // Start is called before the first frame update
     void Start()
     {
         timerLabel.text = "Jump boost: 0 seconds\nSpeed boost: 0 seconds";
@@ -54,7 +57,7 @@ public class PlayerInfo : MonoBehaviour
         speedTimerIsActive = jumpTimerIsActive = false;
     }
 
-    // Update is called once per frame
+    // Update is called once per frame. We update lives here, and we also set the timers on the HUD. 
     void Update()
     {
         updateLives();
@@ -76,6 +79,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    // initializes the timer label based on which powerup is picked up. This method is called in the update method.
     private void setTimerLabel(string boost)
     {
         if (boost.Equals("Speed")) {
@@ -85,6 +89,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    // updates the lives on the HUD.
     private void updateLives()
     {
         foreach (Image img in hearts)
@@ -98,6 +103,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    // adds a life to the player only if they do not have full health. 
     public void addLife()
     {
         if (health < 3)
@@ -106,24 +112,25 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    // Adding speed boost to the player.
     public void speedBoost()
     {
-        Debug.Log("Powerup has started!");
         speedTimerIsActive = true;
         speed = 10f;
 
         pc.movementSpeed = speed;
     }
 
+    // Adding jump boost to the player.
     public void jumpBoost()
     {
-        Debug.Log("Powerup has started!");
         jumpTimerIsActive = true;
         jump = 20f;
 
         pc.jumpingForce = jump;
     }
 
+    // Removing speed boost from the player.
     private void returnSpeedToNormal()
     {
         speedTimerIsActive = false;
@@ -134,6 +141,7 @@ public class PlayerInfo : MonoBehaviour
         pc.movementSpeed = speed;
     }
 
+    // Removing jump boost from the player.
     private void returnJumpToNormal() {
         jumpTimerIsActive = false;
         jump = 14f;
@@ -143,6 +151,7 @@ public class PlayerInfo : MonoBehaviour
         pc.jumpingForce = jump;
     }
 
+    // Decreasing the speed timer.
     private void countdownSpeedTimer()
     {
         speedTimeLeft -= 1 * Time.deltaTime;
@@ -154,6 +163,7 @@ public class PlayerInfo : MonoBehaviour
         }
     }
 
+    // Decreasing the jump timer.
     private void countdownJumpTimer()
     {
         jumpTimeLeft -= 1 * Time.deltaTime;

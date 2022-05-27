@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Script used to handle UI transitions. 
 public class MainMenu : MonoBehaviour
 {
     // Start is called before the first frame update
@@ -73,6 +74,7 @@ public class MainMenu : MonoBehaviour
         PlayerInfo.health = 3; 
     }
 
+    // Method used to restart the game from the win screen and game over screen.
     public void RestartGame()
     {
         PlayerInfo.points = 0;

@@ -10,6 +10,7 @@ public class EnemyFollow : MonoBehaviour
     public GameObject player;
     public float speed;
     public bool facingRight = false;
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -41,7 +42,7 @@ public class EnemyFollow : MonoBehaviour
 
     void Flip()
     {
-        //here your flip funktion, as example
+        //here your flip function, as example
         facingRight = !facingRight;
         Vector3 tmpScale = gameObject.transform.localScale;
         tmpScale.x *= -1;

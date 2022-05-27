@@ -4,6 +4,7 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 using TMPro;
 
+// Script used for the player controller. 
 public class PlayerController : MonoBehaviour
 {
 
@@ -51,7 +52,6 @@ public class PlayerController : MonoBehaviour
     // This is the platform in level 2 that should start going up and down when the player hits the trigger. 
     public GameObject goUpPlatformLevel2;
 
-    //Hello
     // variable to check which scene is loaded. 
     public static string previousScene;
 
@@ -133,26 +133,10 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {   
-        //Checks if the player is touching the ground. This prevents the character to jump on the air
-        /*if (collision.gameObject.CompareTag("Ground"))
-        {
-            isJumping = false;
-        }      */ 
-
         if (collision.gameObject.tag == "edge")
         {
             PlayerInfo.health--;
             audioSources[2].Play();
-
-            // This code gives a bug when the player dies. We use the code below 
-            /* if (LevelEnd.Equals("Null") && PlayerInfo.health == 0)
-             {
-                 PlayerInfo.health = 3;
-             }
-             else
-             {
-                 checkPlayerStatus();
-             }*/
 
             // If the scene is Tutorial, it just resets the health of the player.
             if (SceneManager.GetActiveScene() == SceneManager.GetSceneByName("TutorialLevel"))
@@ -207,16 +191,19 @@ public class PlayerController : MonoBehaviour
             checkPlayerStatus();
         }
 
+        // Loads tutorial level end. 
         if (collision.gameObject.tag == "door")
         {
             PlayerInfo.health = 3;
             SceneManager.LoadScene("TutorialLevelEnd");
         }
+        // Loads level 1 end. 
         if (collision.gameObject.tag == "doorLevel1")
         {
             PlayerInfo.health = 3;
             SceneManager.LoadScene("Level1End");
         }
+        // Loads level 2 end.
         if (collision.gameObject.tag == "doorLevel2")
         {
             PlayerInfo.health = 3;
@@ -224,6 +211,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // This method flips the player to the left or right.
     void flip()
     {
         Vector3 currentScale = gameObject.transform.localScale;
@@ -233,6 +221,7 @@ public class PlayerController : MonoBehaviour
         facingRight = !facingRight;
     }
     
+    // This method allows the player to shoot.
     void shoot()
     {
         if (Time.time > nextShot) {
@@ -243,12 +232,14 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Thsi is used to stop the shoot animation of the player. 
     public IEnumerator stopShootingForm()
     {
         yield return new WaitForSeconds(0.5f);
         playerAnimator.SetBool("IsShooting", false);
     }
 
+    // Used to check trigger collisions (with checkpiont, coins, move up platforms, etc.).
     public void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Checkpoint2")
@@ -293,6 +284,7 @@ public class PlayerController : MonoBehaviour
         }
     }
 
+    // Checks the players status, meaning if they are dead or alive. Based on this, it will load the appropriate scene.
     public void checkPlayerStatus()
     {
         if (PlayerInfo.health <= 0)
@@ -311,9 +303,10 @@ public class PlayerController : MonoBehaviour
             }
         }
     }
+
+    // This is the code used to control the player's jumping.
     public void raycastJumping()
     {
-
         if (Physics2D.Raycast(bottomPlayer.transform.position, Vector2.down, 0.1f, layerMask) || 
             Physics2D.Raycast(bottomPlayer.transform.position, Vector2.right, 0.1f, layerMask) ||
             Physics2D.Raycast(bottomPlayer.transform.position, Vector2.left, 0.1f, layerMask))

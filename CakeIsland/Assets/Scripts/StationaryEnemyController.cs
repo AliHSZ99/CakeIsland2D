@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for the stationary enemy that shoots depending on the range of the player. 
 public class StationaryEnemyController : MonoBehaviour
 {
-
+    // variables.
     public Rigidbody2D rb;
 
     public GameObject bullet;
@@ -49,6 +50,7 @@ public class StationaryEnemyController : MonoBehaviour
         
     }
 
+    // FixedUpdate is called once per physics update. Flips the enemy depending on the direction of the player.
     void FixedUpdate()
     {
         
@@ -67,6 +69,7 @@ public class StationaryEnemyController : MonoBehaviour
         }
     }
 
+    // Methods for flipping the enemy.
     void flip(string newDirection)
     {
         Vector3 newScale = baseScale;
@@ -84,6 +87,7 @@ public class StationaryEnemyController : MonoBehaviour
         facingDirection = newDirection;
     }
 
+    // Checks if the player is in sight to shoot (using raycast/linecast).
     bool isPlayerInSight()
     {
         bool val = false;
@@ -112,6 +116,7 @@ public class StationaryEnemyController : MonoBehaviour
         return val;
     }
 
+    // Method to shoot the bullets. 
     void shoot()
     {
         Debug.Log("CONTROLLER DIRCTION " + facingDirection);

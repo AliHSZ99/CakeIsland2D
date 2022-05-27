@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the flying enemies that follow the player. 
 public class FlyingEnemyController : MonoBehaviour
 {
-
+    // variables.
     public float range;
     public float speed;
     public GameObject player;
@@ -21,7 +22,7 @@ public class FlyingEnemyController : MonoBehaviour
         player = GameObject.FindGameObjectWithTag("Player");
     }
 
-    // Update is called once per frame
+    // Update is called once per frame. Moves towards the player. 
     void Update()
     {
         if(Vector2.Distance(gameObject.transform.position,player.transform.position) <= range)

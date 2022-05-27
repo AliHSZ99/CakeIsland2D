@@ -1,5 +1,6 @@
 using UnityEngine;
 
+// Script to make the camera follow the player. 
 public class PlayerFollowCamera : MonoBehaviour
 {   
     // To know the position of the player
@@ -9,7 +10,8 @@ public class PlayerFollowCamera : MonoBehaviour
 
     //smoothFollow has the range of 2-10
     [Range(2, 10)]
-    public float smoothFollow;     
+    public float smoothFollow;   
+
     // Start is called before the first frame update
     void Start()
     {

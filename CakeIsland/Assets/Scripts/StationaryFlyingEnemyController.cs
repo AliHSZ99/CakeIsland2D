@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for Stationary flying enemies. 
 public class StationaryFlyingEnemyController : MonoBehaviour
 {
 
+    // variables. 
     public GameObject player;
     public float range;
 
@@ -43,6 +45,7 @@ public class StationaryFlyingEnemyController : MonoBehaviour
         
     }
 
+    // FixedUpdate is called once per physics update.
     private void FixedUpdate()
     {
         if (transform.position.x < player.transform.position.x)
@@ -60,7 +63,7 @@ public class StationaryFlyingEnemyController : MonoBehaviour
         }
     }
 
-
+    // Flips the image of the enemy based on where the player is located (faces player).
     void flip(string newDirection)
     {
         Vector3 newScale = baseScale;
@@ -78,6 +81,7 @@ public class StationaryFlyingEnemyController : MonoBehaviour
         facingDirection = newDirection;
     }
 
+    // Method called to make the flying enemy shoot.
     void shoot()
     {
         time += Time.deltaTime;

@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for the stationary flying enemie's bullet. 
 public class StationaryFlyingEnemyBulletController : MonoBehaviour
 {
+    // variables.
     public float speed;
     private float bulletLife;
 
@@ -12,7 +14,6 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
     public GameObject player;
     Vector2 playerDirection;
     public AudioSource enemyShoot;
-
 
     public GameObject respawnPoint;
 
@@ -36,6 +37,7 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
         
     }
 
+    // Checks for collisions (bullet collision with player, ground, or enemy) to destroy the bullet from the game.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used to rotate some platforms in level 2. 
 public class RotatePlatform : MonoBehaviour
 {
     public float moveSpeed;
@@ -12,7 +13,7 @@ public class RotatePlatform : MonoBehaviour
         
     }
 
-    // Update is called once per frame
+    // Rotates the platforms. 
     void FixedUpdate()
     {
         transform.Rotate(0f, 0f, moveSpeed, Space.Self);

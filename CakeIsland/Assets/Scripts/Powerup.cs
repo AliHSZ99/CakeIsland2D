@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script for the powerups. 
 public class Powerup : MonoBehaviour
 {
     public string type;
@@ -10,17 +11,12 @@ public class Powerup : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-
         playerSounds = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerController>().audioSources;
 
         if(tag == "heart")
         {
             type = "heart";
         }
-        /*else if(tag == "shoot")
-        {
-            type = "shoot";
-        }*/
         else if(tag == "speed")
         {
             type = "speed";
@@ -37,22 +33,16 @@ public class Powerup : MonoBehaviour
         
     }
 
+    // Checks which powerup the player is touching. 
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Touched Collectible.");
-
             if (type == "heart")
             {
                 playerSounds[6].Play();
                 addLife(collision.gameObject);
             }
-
-            /*if (type == "shoot")
-            {
-                shoot(collision.gameObject);
-            }*/
 
             if (type == "speed")
             {
@@ -73,6 +63,7 @@ public class Powerup : MonoBehaviour
         }
     }
 
+    // We add a life to the player if they touch a heart powerup.
     void addLife(GameObject player)
     {
         PlayerInfo info = player.GetComponent<PlayerInfo>();
@@ -80,13 +71,7 @@ public class Powerup : MonoBehaviour
         Destroy(gameObject);
     }
 
-    /*void shoot(GameObject player)
-    {
-        PlayerInfo info = player.GetComponent<PlayerInfo>();
-        info.shoot();
-        Destroy(gameObject);
-    }*/
-
+    // We add a speed boost to the player if they touch a speed powerup.
     void speedBoost(GameObject player)
     {
         PlayerInfo info = player.GetComponent<PlayerInfo>();
@@ -94,6 +79,7 @@ public class Powerup : MonoBehaviour
         Destroy(gameObject);
     }
 
+    // We add a jump boost to the player if they touch a jump powerup.
     void jumpBoost(GameObject player)
     {
         PlayerInfo info = player.GetComponent<PlayerInfo>();
