@@ -140,7 +140,7 @@ public class EnemyController : MonoBehaviour
         if (collision.gameObject.tag == "Player")
         {
             Debug.Log("Touched Player");
-            collision.gameObject.transform.position = respawnPoint.transform.position;
+           // collision.gameObject.transform.position = respawnPoint.transform.position;
         }
     }
 }

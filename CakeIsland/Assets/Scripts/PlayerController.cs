@@ -314,11 +314,12 @@ public class PlayerController : MonoBehaviour
     public void raycastJumping()
     {
 
-        if (Physics2D.Raycast(bottomPlayer.transform.position, Vector2.down, 1f, layerMask))
+        if (Physics2D.Raycast(bottomPlayer.transform.position, Vector2.down, 0.1f, layerMask) || 
+            Physics2D.Raycast(bottomPlayer.transform.position, Vector2.right, 0.1f, layerMask) ||
+            Physics2D.Raycast(bottomPlayer.transform.position, Vector2.left, 0.1f, layerMask))
         {
             isJumping = false;
-        }
-        else
+        } else
         {
             isJumping = true;
         }
