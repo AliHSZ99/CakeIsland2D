@@ -120,7 +120,7 @@ public class PlayerController : MonoBehaviour
 
         if (Input.GetButtonDown("Fire1") && (canShoot || canShootBoss))
         {
-            Debug.Log("Player can shoot!");
+            //Debug.Log("Player can shoot!");
             shoot();
             StartCoroutine(stopShootingForm());
         }
@@ -150,7 +150,7 @@ public class PlayerController : MonoBehaviour
                 checkPlayerStatus();
             }
 
-            Debug.Log("Out of play area.");
+            //Debug.Log("Out of play area.");
             this.transform.position = respawnPoint.transform.position;
         }
         // Make player go back to the checkpoint they are at when they hit a spike 
@@ -269,7 +269,7 @@ public class PlayerController : MonoBehaviour
             isCollected = true;
             PlayerInfo.points += 20;
             audioSources[4].Play();
-            Debug.Log(PlayerInfo.points);
+            //Debug.Log(PlayerInfo.points);
             pointLabel.text = "Points: " + PlayerInfo.points;
         }
 
@@ -279,7 +279,7 @@ public class PlayerController : MonoBehaviour
             isCollected = true;
             PlayerInfo.points += 40;
             audioSources[5].Play();
-            Debug.Log(PlayerInfo.points);
+            //Debug.Log(PlayerInfo.points);
             pointLabel.text = "Points: " + PlayerInfo.points;
         }
     }

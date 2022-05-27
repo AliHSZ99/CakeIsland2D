@@ -22,7 +22,7 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
     {
         enemyShoot = GameObject.Find("enemyTemp").GetComponent<EnemyController>().enemyShootSound;
         enemyShoot.Play();
-        Debug.Log("bullet shot");
+        //Debug.Log("bullet shot");
         speed = 50f;
         bulletLife = 3f;
         player = GameObject.FindGameObjectWithTag("Player");
@@ -42,7 +42,7 @@ public class StationaryFlyingEnemyBulletController : MonoBehaviour
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player Shot.");
+            //Debug.Log("Player Shot.");
             /*collision.gameObject.transform.position = respawnPoint.transform.position;*/
             Destroy(gameObject);
         }

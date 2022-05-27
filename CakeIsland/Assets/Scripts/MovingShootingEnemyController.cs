@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the controller of the moving shooting enemy.
 public class MovingShootingEnemyController : MonoBehaviour
 {
+
+    // Variables.
     Rigidbody2D rb;
 
     float movementSpeed = 5;
@@ -55,6 +58,7 @@ public class MovingShootingEnemyController : MonoBehaviour
         
     }
 
+// Update is called once per frame. Used for the facing direction and shoot bullets when the player is in sight.
     void FixedUpdate()
     {
         float vX = movementSpeed;
@@ -83,6 +87,7 @@ public class MovingShootingEnemyController : MonoBehaviour
         }
     }
 
+    // Method used to have the enemy face the player (Image rotated horizontally).
     void flip(string newDirection)
     {
         Vector3 newScale = baseScale;
@@ -100,6 +105,7 @@ public class MovingShootingEnemyController : MonoBehaviour
         facingDirection = newDirection;
     }
 
+    // Method used to check if the player is in sight of the enemy and in which exact position they are.
     bool isPlayerInSight()
     {
         bool val = false;
@@ -128,6 +134,7 @@ public class MovingShootingEnemyController : MonoBehaviour
         return val;
     }
 
+    // Method used to check if the moving shooting enemy is hitting a wall.
     bool isHittingWall()
     {
         bool val = false;
@@ -179,15 +186,18 @@ public class MovingShootingEnemyController : MonoBehaviour
         return val;
     }
 
+    // Method used to have the player respawn at the respawn point when they collide with the 
+    // moving shooting enemy's bullet.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Touched Player");
+            //Debug.Log("Touched Player");
             collision.gameObject.transform.position = respawnPoint.transform.position;
         }
     }
 
+    // Method used to instantiate the bullet when the moving shooting enemy shoots.
     void shoot()
     {
         time += Time.deltaTime;

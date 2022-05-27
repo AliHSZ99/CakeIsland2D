@@ -119,7 +119,7 @@ public class StationaryEnemyController : MonoBehaviour
     // Method to shoot the bullets. 
     void shoot()
     {
-        Debug.Log("CONTROLLER DIRCTION " + facingDirection);
+        //Debug.Log("CONTROLLER DIRCTION " + facingDirection);
         time += Time.deltaTime;
         if(time >= 0.5)
         {

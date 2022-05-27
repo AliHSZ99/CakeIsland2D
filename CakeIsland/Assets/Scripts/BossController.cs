@@ -5,9 +5,11 @@ using System.Threading;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Script used for the boss controller.
 public class BossController : MonoBehaviour
 {
 
+    // Variables
     public float time;
     public GameObject bullet;
     public GameObject firePoint;
@@ -18,6 +20,7 @@ public class BossController : MonoBehaviour
     public float meleeDelay;
     public Animator animator;
     public AudioSource[] audioSources;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -43,6 +46,7 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Method used for the two phases of shooting the boss will have during the boss level.
     void Shoot()
     {
         time += Time.deltaTime;
@@ -66,6 +70,7 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Method used to have the boss do a melee attack if the player is too close to it.
     void Melee()
     {
         time += Time.deltaTime;
@@ -90,6 +95,8 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Method used to put the player in either the death screen or game over screen depending on the amount of 
+    // points they have when they die. 
     public static void PlayerDied()
     {
         if(PlayerInfo.points >= 100)
@@ -107,6 +114,7 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Method used to put the player in the WinScreen scene whenever they beat the boss.
     public static void BossDied()
     {
         PlayerInfo.health = 3;
@@ -115,6 +123,7 @@ public class BossController : MonoBehaviour
         SceneManager.LoadScene("WinScreen");
     }
 
+    // Method used to have the player visibly see the boss bullet or melee attack hit them before they die.
     IEnumerator ExecuteAfterTime(float time)
     {
         yield return new WaitForSeconds(time);
@@ -122,6 +131,7 @@ public class BossController : MonoBehaviour
         PlayerDied();
     }
 
+    // Method used to have the boss randomly drop a powerup.
     void DroppingPowerUps()
     {
         time += Time.deltaTime;
@@ -133,6 +143,8 @@ public class BossController : MonoBehaviour
         }
     }
 
+    // Method used to reduce the health of the boss when hit by a player bullet and eventually kill it
+    // when it doesn't have anymore health.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "PlayerBullet")

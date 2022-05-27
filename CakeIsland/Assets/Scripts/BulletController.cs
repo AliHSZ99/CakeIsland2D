@@ -3,9 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+// Script used for the bullet of the player.
 public class BulletController : MonoBehaviour
 {
 
+    // Variables
     public float speed = 20f;
     private float bulletLife = 1f;
 
@@ -67,6 +69,8 @@ public class BulletController : MonoBehaviour
         
     }
 
+    // Method used to have a death sound effect for each enemy type, 
+    // destroy the bullet, and have a chance of a drop.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if(collision.gameObject.tag == "Enemy")
@@ -79,7 +83,7 @@ public class BulletController : MonoBehaviour
             } else if (enemyName.IndexOf("StationaryEnemy") != -1) {
                 stationaryEnemySound.Play();
             }
-            Debug.Log(collision.gameObject.name);
+            //Debug.Log(collision.gameObject.name);
             Destroy(collision.gameObject);
             dp.dropOrNot();
             Destroy(gameObject);

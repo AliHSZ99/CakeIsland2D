@@ -2,8 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the bullet of the enemy.
 public class EnemyBulletController : MonoBehaviour
 {
+
+    // Variables
     public float speed = 10f;
     private float bulletLife = 1.5f;
 
@@ -25,7 +28,7 @@ public class EnemyBulletController : MonoBehaviour
         enemyShoot.Play();
         Destroy(gameObject, bulletLife);
 
-        Debug.Log("ENEMY DIRECTION " + direction);
+        //Debug.Log("ENEMY DIRECTION " + direction);
 
         if (direction.Equals("right"))
         {
@@ -43,11 +46,12 @@ public class EnemyBulletController : MonoBehaviour
         
     }
 
+    // Method used to remove the bullet when it collides with the player, enemy, or ground.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Player Shot.");
+            //Debug.Log("Player Shot.");
             /*collision.gameObject.transform.position = respawnPoint.transform.position;*/
             Destroy(gameObject);
         }

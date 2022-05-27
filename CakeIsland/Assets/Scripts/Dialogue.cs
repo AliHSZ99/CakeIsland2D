@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using TMPro;
 
+// Script used for the dialogue text in the tutorial level.
 public class Dialogue : MonoBehaviour
 {
+
+    // Variables
     public TextMeshProUGUI text;
     public string[] lines;
     public float textSpeed;
     private int index;
     int line;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -24,12 +28,14 @@ public class Dialogue : MonoBehaviour
         updateDialogue();
     }
 
+    // Method used to start the dialogue text.
     void startDialogue()
     {
         index = 0;
         StartCoroutine(TypeLine());
     }
 
+    // Method used to have a character appear one by one.
     IEnumerator TypeLine()
     {
         // Type each character 1 by 1
@@ -40,6 +46,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    // Method used to for the next line of text.
     void NextLine()
     {
         if (index < lines.Length - 1)
@@ -53,6 +60,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
+    // Method used to change the dialogue after each player input.
     void updateDialogue()
     {
         

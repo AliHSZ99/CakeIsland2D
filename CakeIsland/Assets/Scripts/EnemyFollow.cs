@@ -2,9 +2,11 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used to make the enemy follow the player
 public class EnemyFollow : MonoBehaviour
 {
 
+    // Variables
     public Transform playerTransform;
     public Rigidbody2D rb;
     public GameObject player;
@@ -40,6 +42,7 @@ public class EnemyFollow : MonoBehaviour
             Flip();
     }
 
+    // Method used to have the enemy face the player (Image rotated horizontally).
     void Flip()
     {
         //here your flip function, as example

@@ -3,13 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
+// Script used for the health system of the boss.
 public class BossInfo : MonoBehaviour
 {
+
+    // Variables
     public static int health = 10;
     public Image[] hearts;
     public Sprite fullHeart;
     public Sprite emptyHeart;
     public GameObject boss;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -22,6 +26,7 @@ public class BossInfo : MonoBehaviour
         updateLives();
     }
 
+    // Method used to update the image of each heart of the boss depending on its health.
     private void updateLives()
     {
         foreach (Image img in hearts)

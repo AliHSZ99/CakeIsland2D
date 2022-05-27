@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the bullet of the moving shooting enemy.
 public class MovingShootingEnemyBulletController : MonoBehaviour
 {
+    // Variables
     public float speed = 10f;
     private float bulletLife = 2f;
 
@@ -38,6 +40,7 @@ public class MovingShootingEnemyBulletController : MonoBehaviour
 
     }
 
+    // Method used to destroy the bullet when it collides with the player or ground.
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")

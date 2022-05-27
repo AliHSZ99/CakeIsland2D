@@ -2,8 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the enemy that follows the player.
 public class EnemyController : MonoBehaviour
 {
+    // Variables
     Rigidbody2D rb;
     
     float movementSpeed = 5;
@@ -41,6 +43,7 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    // Update is called once per frame. Used for the movement, edge, and to face the player.
     private void FixedUpdate()
     {
 
@@ -67,6 +70,7 @@ public class EnemyController : MonoBehaviour
         
     }
 
+    // Method used to have the enemy face the player (Image rotated horizontally).
     void flip(string newDirection)
     {
         Vector3 newScale = baseScale;
@@ -84,6 +88,7 @@ public class EnemyController : MonoBehaviour
         facingDirection = newDirection;
     }
 
+    // Method used to check if the enemy is hitting a wall.
     bool isHittingWall()
     {
         bool val = false;
@@ -112,6 +117,7 @@ public class EnemyController : MonoBehaviour
         return val;
     }
 
+    // Method used to check if the enemy is near the edge of a platform.
     bool isNearEdge()
     {
         bool val = true;
@@ -135,11 +141,12 @@ public class EnemyController : MonoBehaviour
         return val;
     }
 
+    // TO BE REMOVED
     private void OnCollisionEnter2D(Collision2D collision)
     {
         if (collision.gameObject.tag == "Player")
         {
-            Debug.Log("Touched Player");
+            //Debug.Log("Touched Player");
            // collision.gameObject.transform.position = respawnPoint.transform.position;
         }
     }

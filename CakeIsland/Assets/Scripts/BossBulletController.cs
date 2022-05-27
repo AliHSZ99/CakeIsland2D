@@ -2,9 +2,10 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+// Script used for the bullet of the boss.
 public class BossBulletController : MonoBehaviour
 {
-    // Start is called before the first frame update
+    // Variables
     public float speed;
     private float bulletLife;
     public Rigidbody2D rb;
@@ -32,6 +33,8 @@ public class BossBulletController : MonoBehaviour
 
     }
 
+    // Method used to update the player's health when they are hit by the boss bullet. If the player
+    // only has one life left, it kills them.
     private void OnTriggerEnter2D(Collider2D collision)
     {
         if (collision.gameObject.tag == "Player")
